@@ -135,6 +135,7 @@ p{margin:0}
 
 /* sections */
 section.band{padding-block:clamp(28px,5vw,56px)}
+section[id],article[id],aside[id]{scroll-margin-top:76px}
 .section-head{display:flex; align-items:end; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:22px}
 .section-head h2{font-family:var(--font-display); font-size:clamp(2.4rem,5vw,3.6rem); color:var(--navy); line-height:1}
 .section-head p{color:var(--muted); max-width:40rem}
@@ -339,7 +340,6 @@ footer p{max-width:70ch; opacity:.9}
       </div>
       <p class="blurb">The shirt we designed for the drive. A quiet mark on the chest and, on the back, two faces you would meet at the shelter.</p>
       <ul class="specs">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg><span>Designed by our team for Centre County PAWS</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg><span>White tee, navy print, front and back</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg><span>Adopt · Foster · Support</span></li>
       </ul>
@@ -620,6 +620,13 @@ footer p{max-width:70ch; opacity:.9}
   }));
 
   const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* ---------- keep the address clean: scroll to sections without putting #section in the URL ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click', e=>{
+    const id=a.getAttribute('href').slice(1); const t=id?document.getElementById(id):null; if(!t) return;
+    e.preventDefault(); t.scrollIntoView({behavior: reduce.matches?'auto':'smooth', block:'start'});
+  }));
+  if(location.hash){ history.replaceState(null,'',location.pathname+location.search); window.scrollTo(0,0); }
 
   /* ---------- shared drawing helpers (original paper cutout style) ---------- */
   let colors={};

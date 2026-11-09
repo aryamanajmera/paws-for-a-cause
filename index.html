@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Paws for a Cause</title>
-<meta name="description" content="Team B8 at Penn State is raising money for Centre County PAWS, the no kill shelter in State College. Donate on our GoFundMe or buy a Paws for a Cause shirt.">
+<meta name="description" content="Team B8's PAWS Can Drive for Centre County PAWS: donate on GoFundMe, see our Paws for a Cause tee and follow how many cans of pet food we have filled.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%231b3a78'%3E%3Cellipse cx='50' cy='66' rx='22' ry='18'/%3E%3Cellipse cx='22' cy='42' rx='9' ry='13' transform='rotate(-20 22 42)'/%3E%3Cellipse cx='40' cy='26' rx='9' ry='13' transform='rotate(-6 40 26)'/%3E%3Cellipse cx='60' cy='26' rx='9' ry='13' transform='rotate(6 60 26)'/%3E%3Cellipse cx='78' cy='42' rx='9' ry='13' transform='rotate(20 78 42)'/%3E%3C/g%3E%3C/svg%3E">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Paws for a Cause">
-<meta property="og:description" content="Team B8 at Penn State is raising money for Centre County PAWS, the no kill shelter in State College. Donate on our GoFundMe or buy a Paws for a Cause shirt.">
+<meta property="og:description" content="Team B8's PAWS Can Drive for Centre County PAWS: donate on GoFundMe, see our Paws for a Cause tee and follow how many cans of pet food we have filled.">
 <meta property="og:url" content="https://aryamanajmera.github.io/paws-for-a-cause/">
 <meta property="og:image" content="https://aryamanajmera.github.io/paws-for-a-cause/img/poster.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -17,13 +17,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Nunito:wght@400;600;700;800&display=swap">
 <style>
-/* Layout: plain white page (single light look, by request) with paper-cutout animals moving behind everything and a full-bleed rescue scene under the hero; GoFundMe stage centre, shirt stand beside it; story, shirts, poster, shelter below. */
+/* Layout: plain white page (single light look, by request) with paper-cutout animals moving behind everything and a rescue scene under the hero; GoFundMe stage centre with the product beside it; then the drive, the story, the shirt, the poster, the shelter and a share kit. */
 :root{
   color-scheme:light;
   --bg:#ffffff; --surface:rgba(255,255,255,.96); --surface-solid:#ffffff; --surface-2:#f3f6fb;
   --ink:#13213f; --muted:#55658a; --line:#dfe6f1;
   --navy:#1b3a78; --navy-deep:#112a5e; --sky:#a9c9ef; --sky-soft:#dbe7f8;
-  --gold:#e9b45a; --coral:#e5706b; --gfm:#02a95c; --gfm-ink:#ffffff;
+  --gold:#e9b45a; --gold-soft:#fff3d6; --coral:#e5706b; --coral-soft:#fde7e5; --gfm:#02a95c; --gfm-ink:#ffffff;
   --btn-bg:#1b3a78; --btn-fg:#ffffff; --accent:#1b3a78; --focus:#2f6fd6;
   --qr-bg:#ffffff; --footer-bg:#112a5e; --footer-fg:#e8eefb; --footer-link:#cfe0ff;
   --scene-ink:#1b3a78; --scene-soft:#9fc0ea; --scene-ground:#c7d2e3; --scene-heart:#e5706b; --scene-sun:#f0c165; --scene-eye:#ffffff;
@@ -32,13 +32,10 @@
   --font-body:'Nunito','Avenir Next','Segoe UI',system-ui,sans-serif;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
-body{
-  margin:0; background:var(--bg); color:var(--ink);
-  font-family:var(--font-body); font-size:17px; line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--font-body); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased}
 body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--bg)}
 a{color:var(--accent)}
 img{max-width:100%; height:auto; display:block}
@@ -48,6 +45,7 @@ p{margin:0}
 .display{font-family:var(--font-display); font-weight:400; letter-spacing:.005em; line-height:.95}
 .eyebrow{font-size:.78rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
 .wrap{max-width:1180px; margin:0 auto; padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px))}
+.sr{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
 
 /* ambient background and page stacking */
 #scene{position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none}
@@ -63,7 +61,7 @@ p{margin:0}
 .nav::-webkit-scrollbar{display:none}
 .nav a{text-decoration:none; color:var(--ink); font-weight:700; font-size:.95rem; padding:6px 10px; border-radius:999px; white-space:nowrap}
 .nav a:hover{background:var(--surface-2)}
-.pill{display:inline-flex; align-items:center; gap:8px; background:var(--sky-soft); color:var(--navy-deep); border-radius:999px; padding:6px 12px; font-weight:800; font-size:.85rem; white-space:nowrap; font-variant-numeric:tabular-nums}
+.pill{display:inline-flex; align-items:center; gap:8px; background:var(--sky-soft); color:var(--navy-deep); border-radius:999px; padding:6px 12px; font-weight:800; font-size:.85rem; white-space:nowrap; font-variant-numeric:tabular-nums; text-decoration:none}
 .pill i{width:8px; height:8px; border-radius:50%; background:var(--gfm); display:inline-block}
 @media (max-width:760px){
   .topbar .wrap{gap:4px 12px; padding-block:8px 6px}
@@ -78,17 +76,29 @@ p{margin:0}
 .hero h1 .paw{position:absolute; right:-.5em; top:-.08em; width:.5em; height:.5em; color:var(--sky); transform:rotate(18deg)}
 .hero .tag{font-family:var(--font-display); font-size:clamp(1.7rem,4.2vw,2.8rem); color:var(--ink); margin-top:8px; line-height:1.05}
 .hero .tag mark{background:linear-gradient(transparent 55%, var(--sky-soft) 55%); color:inherit; padding:0 .15em}
-.hero .lede{max-width:46rem; margin:16px auto 0; color:var(--muted); font-size:1.02rem}
+.hero .lede{max-width:48rem; margin:16px auto 0; color:var(--muted); font-size:1.05rem}
+.hero .cta-row{justify-content:center; margin-top:22px}
 
 /* rescue scene band */
 .stage-band{position:relative; width:100%; height:clamp(200px,24vw,300px); margin-top:6px}
 #stage{position:absolute; inset:0; width:100%; height:100%; display:block}
 
+/* buttons and cards */
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; border:0; border-radius:14px; padding:14px 22px; font:inherit; font-weight:800; font-size:1.02rem; text-decoration:none; cursor:pointer; line-height:1.1; min-height:50px; color:var(--ink)}
+.btn.primary{background:var(--btn-bg); color:var(--btn-fg)}
+.btn.gfm{background:var(--gfm); color:var(--gfm-ink); box-shadow:0 12px 24px -14px rgba(2,169,92,.8)}
+.btn.ghost{background:var(--surface-solid); color:var(--ink); border:2px solid var(--line)}
+.btn:hover{filter:brightness(1.05)}
+.btn:active{transform:translateY(1px)}
+.btn svg{width:18px; height:18px}
+.cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:20px; align-items:center}
+.card{background:var(--surface); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border:1px solid var(--line); border-radius:22px; box-shadow:0 18px 50px -30px rgba(17,42,94,.45)}
+.card.pad{padding:clamp(20px,3.2vw,34px)}
+.toast{font-size:.85rem; font-weight:800; color:var(--gfm); min-height:1.2em; margin-top:8px}
+
 /* stage grid */
 .stage{display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:22px; align-items:start; padding-block:0 28px; margin-top:14px}
 @media (max-width:900px){ .stage{grid-template-columns:1fr} }
-.card{background:var(--surface); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border:1px solid var(--line); border-radius:22px; box-shadow:0 18px 50px -30px rgba(17,42,94,.45)}
-.card.pad{padding:clamp(20px,3.2vw,34px)}
 .gfm-card h2{font-size:clamp(1.45rem,2.6vw,2rem); line-height:1.15; font-weight:800; letter-spacing:-.01em; margin-top:8px}
 .gfm-card .tagline{margin-top:10px; font-size:1.08rem; color:var(--muted)}
 .gfm-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
@@ -96,66 +106,32 @@ p{margin:0}
 .gfm-wordmark{display:inline-flex; align-items:center; gap:6px; background:var(--gfm); color:var(--gfm-ink); border-radius:8px; padding:3px 9px; font-weight:800; font-size:.8rem; letter-spacing:.02em}
 .progress{margin-top:22px}
 .progress .bar{height:12px; background:var(--surface-2); border-radius:999px; overflow:hidden; border:1px solid var(--line)}
-.progress .bar i{display:block; height:100%; width:5%; min-width:14px; background:linear-gradient(90deg,var(--gfm),#5ad48f); border-radius:999px}
+.progress .bar i{display:block; height:100%; width:0; min-width:14px; background:linear-gradient(90deg,var(--gfm),#5ad48f); border-radius:999px; transition:width .9s ease}
 .stats{display:flex; gap:22px; flex-wrap:wrap; margin-top:12px; font-variant-numeric:tabular-nums}
 .stats b{font-size:1.6rem; font-weight:800; line-height:1; display:block}
 .stats span{font-size:.82rem; color:var(--muted); font-weight:700}
 .snapshot{font-size:.8rem; color:var(--muted); margin-top:8px}
-.cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:20px; align-items:center}
-.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; border:0; border-radius:14px; padding:14px 22px; font:inherit; font-weight:800; font-size:1.02rem; text-decoration:none; cursor:pointer; line-height:1.1; min-height:50px}
-.btn.primary{background:var(--btn-bg); color:var(--btn-fg)}
-.btn.gfm{background:var(--gfm); color:var(--gfm-ink); box-shadow:0 12px 24px -14px rgba(2,169,92,.8)}
-.btn.ghost{background:transparent; color:var(--ink); border:2px solid var(--line)}
-.btn:hover{filter:brightness(1.05)}
-.btn:active{transform:translateY(1px)}
-.btn svg{width:18px; height:18px}
-.qr-block{display:grid; grid-template-columns:150px minmax(0,1fr); gap:18px; align-items:center; margin-top:24px; padding:16px; border:1px dashed var(--line); border-radius:18px; background:var(--surface-2)}
-@media (max-width:480px){ .qr-block{grid-template-columns:1fr; justify-items:center; text-align:center} }
-.qr{background:var(--qr-bg); border-radius:14px; padding:8px; width:150px; height:150px}
-.qr svg{width:100%; height:100%; display:block}
-.qr-block .display{font-size:1.9rem; color:var(--navy); line-height:1}
-.qr-block .url{font-size:.82rem; color:var(--muted); word-break:break-all; margin-top:6px; user-select:all}
-.qr-block .how{font-size:.92rem; margin-top:4px}
-.impact{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:22px}
-@media (max-width:560px){ .impact{grid-template-columns:1fr} }
-.impact div{display:flex; gap:10px; align-items:flex-start; font-weight:700; font-size:.95rem; line-height:1.3}
-.impact svg{width:30px; height:30px; flex:none; color:var(--navy)}
-.hundred{margin-top:18px; display:flex; align-items:center; gap:12px; background:var(--sky-soft); color:var(--navy-deep); border-radius:14px; padding:12px 16px; font-weight:800}
-.hundred b{font-family:var(--font-display); font-size:2rem; font-weight:400; line-height:1}
+.cans{margin-top:18px; display:grid; grid-template-columns:auto minmax(0,1fr); gap:14px; align-items:center; background:var(--gold-soft); border-radius:16px; padding:14px 16px}
+.cans svg{width:44px; height:44px; color:var(--navy)}
+.cans b{font-family:var(--font-display); font-size:2rem; font-weight:400; line-height:1; color:var(--navy)}
+.cans p{font-size:.92rem; line-height:1.35}
+@media (max-width:480px){ .cans{grid-template-columns:1fr} }
 .facts{display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:20px; font-size:.9rem; color:var(--muted)}
 .facts b{color:var(--ink); font-weight:800}
 
-/* shop */
-.shop h2{font-family:var(--font-display); font-size:2.4rem; color:var(--navy); line-height:1; margin-top:6px}
-.shop .price{font-size:1rem; color:var(--muted); margin-top:8px}
-.shop .price b{color:var(--ink); font-size:1.25rem}
-.designs{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin-top:16px}
-@media (max-width:420px){ .designs{grid-template-columns:repeat(2,minmax(0,1fr))} }
-.design{border:2px solid var(--line); background:var(--surface-solid); border-radius:14px; padding:6px; cursor:pointer; text-align:center; font:inherit; color:var(--ink)}
-.design img{border-radius:9px; aspect-ratio:3/4; object-fit:cover; width:100%}
-.design span{display:block; font-size:.74rem; font-weight:800; margin-top:6px; line-height:1.15}
-.design[aria-pressed="true"]{border-color:var(--navy); box-shadow:0 0 0 3px var(--sky-soft)}
-.field{margin-top:16px}
-.field label,.field .lbl{display:block; font-size:.8rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:8px}
-.sizes{display:flex; gap:6px; flex-wrap:wrap}
-.size{min-width:46px; padding:8px 10px; border-radius:10px; border:2px solid var(--line); background:var(--surface-solid); font:inherit; font-weight:800; color:var(--ink); cursor:pointer}
-.size[aria-pressed="true"]{background:var(--btn-bg); color:var(--btn-fg); border-color:var(--btn-bg)}
-.row2{display:grid; grid-template-columns:auto minmax(0,1fr); gap:14px; align-items:end}
-.qty{display:inline-flex; align-items:center; border:2px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface-solid)}
-.qty button{width:40px; height:42px; border:0; background:transparent; font:inherit; font-size:1.3rem; font-weight:800; color:var(--ink); cursor:pointer}
-.qty output{min-width:34px; text-align:center; font-weight:800; font-variant-numeric:tabular-nums}
-.input{width:100%; border:2px solid var(--line); border-radius:12px; padding:10px 12px; font:inherit; background:var(--surface-solid); color:var(--ink); min-height:42px}
-.total{display:flex; justify-content:space-between; align-items:baseline; margin-top:18px; padding-top:14px; border-top:1px solid var(--line)}
-.total b{font-size:1.7rem; font-weight:800; font-variant-numeric:tabular-nums}
-.note{margin-top:14px}
-.note textarea{width:100%; resize:none; border:2px solid var(--line); border-radius:12px; padding:10px 12px; font:inherit; font-weight:700; background:var(--surface-2); color:var(--ink); min-height:72px; line-height:1.4}
-.shop .cta-row{margin-top:14px}
-.shop .cta-row .btn{flex:1 1 auto}
-.toast{font-size:.85rem; font-weight:800; color:var(--gfm); min-height:1.2em; margin-top:8px}
-.steps{list-style:none; padding:0; margin:18px 0 0; display:grid; gap:10px; counter-reset:step}
-.steps li{display:grid; grid-template-columns:30px minmax(0,1fr); gap:10px; align-items:start; font-size:.93rem; line-height:1.4}
-.steps li::before{counter-increment:step; content:counter(step); width:30px; height:30px; border-radius:50%; background:var(--sky-soft); color:var(--navy-deep); font-weight:800; display:grid; place-items:center; font-size:.9rem}
-.fine{font-size:.82rem; color:var(--muted); margin-top:12px}
+/* product card */
+.product h2{font-family:var(--font-display); font-size:2.4rem; color:var(--navy); line-height:1; margin-top:6px}
+.product .view{position:relative; margin-top:16px; border-radius:16px; overflow:hidden; border:1px solid var(--line); background:var(--surface-solid)}
+.product .view img{width:100%; aspect-ratio:4/5; object-fit:cover}
+.flip{position:absolute; left:10px; bottom:10px; display:inline-flex; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:3px; backdrop-filter:blur(6px)}
+.flip button{border:0; background:transparent; font:inherit; font-weight:800; font-size:.78rem; padding:5px 10px; border-radius:999px; color:var(--ink); cursor:pointer}
+.flip button[aria-pressed="true"]{background:var(--btn-bg); color:var(--btn-fg)}
+.product .blurb{margin-top:14px; color:var(--muted)}
+.product .specs{list-style:none; padding:0; margin:14px 0 0; display:grid; gap:8px; font-size:.95rem}
+.product .specs li{display:flex; gap:10px; align-items:flex-start}
+.product .specs svg{width:20px; height:20px; flex:none; color:var(--navy); margin-top:2px}
+.product .cta-row{margin-top:16px}
+.product .fine{font-size:.85rem; color:var(--muted); margin-top:12px}
 
 /* sections */
 section.band{padding-block:clamp(28px,5vw,56px)}
@@ -163,6 +139,34 @@ section.band{padding-block:clamp(28px,5vw,56px)}
 .section-head h2{font-family:var(--font-display); font-size:clamp(2.4rem,5vw,3.6rem); color:var(--navy); line-height:1}
 .section-head p{color:var(--muted); max-width:40rem}
 
+/* the drive */
+.drive-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:22px; align-items:start}
+@media (max-width:900px){ .drive-grid{grid-template-columns:1fr} }
+.prose{display:grid; gap:14px; font-size:1.05rem; max-width:65ch}
+.prose strong{font-weight:800}
+.goals{display:grid; gap:12px}
+.goal{display:grid; grid-template-columns:52px minmax(0,1fr); gap:14px; align-items:start; padding:14px 16px; border:1px solid var(--line); border-radius:16px; background:var(--surface-solid)}
+.goal .num{font-family:var(--font-display); font-size:2.1rem; line-height:1; color:var(--navy); padding-top:2px}
+.goal b{display:block; font-weight:800}
+.goal p{font-size:.93rem; color:var(--muted); line-height:1.4}
+.canbar{margin-top:18px}
+.canbar .lbl{display:flex; justify-content:space-between; font-size:.82rem; font-weight:800; color:var(--muted); margin-bottom:6px; font-variant-numeric:tabular-nums}
+.canbar .track{position:relative; height:16px; background:var(--surface-2); border:1px solid var(--line); border-radius:999px}
+.canbar .fill{position:absolute; inset:0 auto 0 0; width:0; background:linear-gradient(90deg,var(--gold),#f3cf86); border-radius:999px; transition:width .9s ease}
+.canbar .tick{position:absolute; top:-6px; bottom:-6px; width:3px; background:var(--navy); border-radius:2px}
+.canbar .tick span{position:absolute; top:100%; left:50%; transform:translateX(-50%); white-space:nowrap; font-size:.74rem; font-weight:800; color:var(--navy); margin-top:6px}
+.canbar{padding-bottom:22px}
+.rates{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:16px}
+@media (max-width:420px){ .rates{grid-template-columns:1fr} }
+.rate{background:var(--surface-2); border-radius:14px; padding:12px 14px; display:flex; gap:12px; align-items:center}
+.rate svg{width:34px; height:34px; flex:none; color:var(--navy)}
+.rate b{font-size:1.2rem; font-weight:800; display:block; line-height:1.1; font-variant-numeric:tabular-nums}
+.rate span{font-size:.82rem; color:var(--muted); font-weight:700}
+.steps{list-style:none; padding:0; margin:18px 0 0; display:grid; gap:10px; counter-reset:step}
+.steps li{display:grid; grid-template-columns:30px minmax(0,1fr); gap:10px; align-items:start; font-size:.95rem; line-height:1.4}
+.steps li::before{counter-increment:step; content:counter(step); width:30px; height:30px; border-radius:50%; background:var(--sky-soft); color:var(--navy-deep); font-weight:800; display:grid; place-items:center; font-size:.9rem}
+
+/* story */
 .story-grid{display:grid; grid-template-columns:minmax(0,7fr) minmax(0,4fr); gap:22px; align-items:start}
 @media (max-width:900px){ .story-grid{grid-template-columns:1fr} }
 .story{font-size:1.12rem; line-height:1.7; max-width:65ch; display:grid; gap:1.1em}
@@ -175,38 +179,57 @@ section.band{padding-block:clamp(28px,5vw,56px)}
 .factlist small{display:block; color:var(--muted); font-weight:600}
 .avatar{display:inline-grid; place-items:center; width:28px; height:28px; border-radius:50%; background:var(--sky-soft); color:var(--navy-deep); font-weight:800; font-size:.85rem; margin-right:8px; vertical-align:middle}
 
-.shirt-grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px}
-@media (max-width:1000px){ .shirt-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
-@media (max-width:460px){ .shirt-grid{grid-template-columns:1fr} }
-.shirt{display:flex; flex-direction:column; overflow:hidden}
-.shirt .view{position:relative; background:var(--surface-solid); border-bottom:1px solid var(--line)}
-.shirt .view img{width:100%; aspect-ratio:4/5; object-fit:cover}
-.flip{position:absolute; left:10px; bottom:10px; display:inline-flex; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:3px; backdrop-filter:blur(6px)}
-.flip button{border:0; background:transparent; font:inherit; font-weight:800; font-size:.78rem; padding:5px 10px; border-radius:999px; color:var(--ink); cursor:pointer}
-.flip button[aria-pressed="true"]{background:var(--btn-bg); color:var(--btn-fg)}
-.shirt .body{padding:16px 18px 18px; display:grid; gap:8px}
-.shirt h3{font-family:var(--font-display); font-size:1.8rem; line-height:1; color:var(--navy)}
-.shirt .desc{font-size:.92rem; color:var(--muted); line-height:1.45}
-.shirt .foot{display:flex; justify-content:space-between; align-items:center; margin-top:6px; gap:10px}
-.shirt .foot b{font-size:1.2rem; font-weight:800}
-.shirt .foot .btn{padding:10px 14px; min-height:40px; font-size:.9rem}
+/* product section */
+.tee-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px}
+@media (max-width:640px){ .tee-grid{grid-template-columns:1fr} }
+.tee{overflow:hidden}
+.tee img{width:100%; aspect-ratio:4/5; object-fit:cover; background:var(--surface-solid)}
+.tee figcaption{padding:12px 18px 16px; display:flex; justify-content:space-between; gap:10px; align-items:baseline}
+.tee figcaption b{font-family:var(--font-display); font-size:1.5rem; color:var(--navy); font-weight:400}
+.tee figcaption span{font-size:.9rem; color:var(--muted)}
+.design-notes{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:16px}
+@media (max-width:760px){ .design-notes{grid-template-columns:1fr} }
+.note{padding:16px 18px; border:1px solid var(--line); border-radius:16px; background:var(--surface-solid)}
+.note b{display:block; font-weight:800; margin-bottom:4px}
+.note p{font-size:.93rem; color:var(--muted); line-height:1.45}
 
+/* poster */
 .poster-grid{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:28px; align-items:center}
 @media (max-width:900px){ .poster-grid{grid-template-columns:1fr} }
 .poster-grid img{border-radius:18px; box-shadow:0 24px 60px -30px rgba(17,42,94,.5); width:100%; max-width:520px; margin:0 auto}
 .poster-copy{display:grid; gap:14px}
 .poster-copy .big{font-family:var(--font-display); font-size:clamp(2.2rem,4.6vw,3.4rem); color:var(--navy); line-height:1}
 .poster-copy ul{margin:0; padding-left:1.2em; color:var(--muted)}
-.poster-copy .qr-mini{display:flex; gap:14px; align-items:center; margin-top:4px}
-.poster-copy .qr{width:120px; height:120px; flex:none}
 
+/* PAWS */
 .paws-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:22px}
 @media (max-width:800px){ .paws-grid{grid-template-columns:1fr} }
 .quote{font-family:var(--font-display); font-size:clamp(1.8rem,3.4vw,2.5rem); line-height:1.1; color:var(--navy)}
 .cite{color:var(--muted); font-size:.9rem; margin-top:10px}
-.paws-facts{display:grid; gap:10px; font-size:1rem}
+.paws-facts{display:grid; gap:12px; font-size:1rem}
 .paws-facts div{display:flex; gap:12px; align-items:flex-start}
 .paws-facts svg{width:26px; height:26px; flex:none; color:var(--navy); margin-top:2px}
+.paws-stats{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:22px}
+@media (max-width:560px){ .paws-stats{grid-template-columns:1fr} }
+.paws-stats div{background:var(--surface-2); border-radius:14px; padding:14px 16px}
+.paws-stats b{font-family:var(--font-display); font-size:2.2rem; line-height:1; color:var(--navy); font-weight:400; display:block}
+.paws-stats span{font-size:.85rem; color:var(--muted); font-weight:700}
+
+/* happy endings videos */
+.video-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px}
+@media (max-width:760px){ .video-grid{grid-template-columns:1fr} }
+.video{overflow:hidden}
+.video .frame{position:relative; aspect-ratio:16/9; background:var(--surface-2)}
+.video iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.video figcaption{padding:12px 18px 16px; font-size:.92rem; color:var(--muted)}
+
+/* share kit */
+.share-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:22px; align-items:start}
+@media (max-width:900px){ .share-grid{grid-template-columns:1fr} }
+.share textarea{width:100%; resize:vertical; border:2px solid var(--line); border-radius:12px; padding:12px 14px; font:inherit; background:var(--surface-2); color:var(--ink); min-height:150px; line-height:1.45}
+.share label{display:block; font-size:.8rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:8px}
+.linkbox{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:6px}
+.linkbox code{flex:1 1 240px; min-width:0; font:inherit; font-size:.9rem; font-weight:700; background:var(--surface-2); border:1px solid var(--line); border-radius:12px; padding:12px 14px; word-break:break-all; user-select:all}
 
 footer{background:var(--footer-bg); color:var(--footer-fg); margin-top:30px}
 footer .wrap{padding-block:34px 40px; display:grid; gap:14px; font-size:.92rem}
@@ -214,7 +237,7 @@ footer .display{font-size:2.2rem; line-height:1}
 footer a{color:var(--footer-link)}
 footer p{max-width:70ch; opacity:.9}
 
-@media (prefers-reduced-motion: reduce){ .btn:active{transform:none} }
+@media (prefers-reduced-motion: reduce){ .btn:active{transform:none} .progress .bar i,.canbar .fill{transition:none} }
 </style>
 </head>
 <body>
@@ -229,24 +252,31 @@ footer p{max-width:70ch; opacity:.9}
     </a>
     <nav class="nav" aria-label="Sections">
       <a href="#donate">Donate</a>
-      <a href="#shop">Shirts</a>
+      <a href="#drive">The drive</a>
+      <a href="#product">Our shirt</a>
       <a href="#story">Story</a>
       <a href="#poster">Poster</a>
       <a href="#paws">PAWS</a>
+      <a href="#videos">Videos</a>
+      <a href="#share">Share</a>
     </nav>
-    <span class="pill" id="pill"><i aria-hidden="true"></i>$755 raised of $1,000</span>
+    <a class="pill" href="#donate"><i aria-hidden="true"></i><span id="pill-text">$755 raised of $1,000</span></a>
   </div>
 </header>
 
 <main id="top">
   <section class="hero">
     <div class="wrap">
-      <p class="eyebrow">Team B8 · MGMT 453 · Penn State · Fall 2026</p>
+      <p class="eyebrow">PAWS Can Drive · Team B8 · MGMT 215 · Penn State · Fall 2026</p>
       <h1 class="display">Paws for a Cause
         <svg class="paw" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><ellipse cx="50" cy="66" rx="22" ry="18"/><ellipse cx="22" cy="42" rx="9" ry="13" transform="rotate(-20 22 42)"/><ellipse cx="40" cy="26" rx="9" ry="13" transform="rotate(-6 40 26)"/><ellipse cx="60" cy="26" rx="9" ry="13" transform="rotate(6 60 26)"/><ellipse cx="78" cy="42" rx="9" ry="13" transform="rotate(20 78 42)"/></g></svg>
       </h1>
       <p class="tag"><mark>Help Fill Empty Bellies</mark></p>
-      <p class="lede">We are a student team raising money for Centre County PAWS, the no kill shelter on Trout Road in State College. Every donation on our GoFundMe, and every shirt we sell, buys food and daily care for the dogs and cats waiting there for a home.</p>
+      <p class="lede">We are a team of Penn State students running a pet food drive for Centre County PAWS, the shelter on Trout Road in State College. Every dollar donated on our GoFundMe buys cans of dog and cat food for the animals waiting there for a home.</p>
+      <div class="cta-row">
+        <a class="btn gfm" href="https://www.gofundme.com/f/feeding-homeless-paws-mgmt453-team-b8fall-semester-2026" target="_blank" rel="noopener">Donate on GoFundMe</a>
+        <a class="btn ghost" href="#product">See our shirt</a>
+      </div>
     </div>
   </section>
 
@@ -264,14 +294,19 @@ footer p{max-width:70ch; opacity:.9}
       <p class="tagline">This fund supplies Centre County PAWS’ homeless cats and dogs with food and daily care</p>
 
       <div class="progress" aria-label="Fundraising progress">
-        <div class="bar"><i id="bar" style="width:76%"></i></div>
+        <div class="bar"><i id="bar"></i></div>
         <div class="stats">
           <div><b id="raised">$755</b><span>raised</span></div>
-          <div><b id="goal">$1K</b><span>goal</span></div>
-          <div><b id="donors">8</b><span>donations</span></div>
-          <div><b id="pct">76%</b><span>complete</span></div>
+          <div><b id="goal">$1,000</b><span>goal</span></div>
+          <div><b id="donations">8</b><span>donations</span></div>
+          <div><b id="pct">76%</b><span>of the goal</span></div>
         </div>
-        <p class="snapshot">Numbers as shown on GoFundMe on November 7, 2026. The live total is on the GoFundMe page.</p>
+        <p class="snapshot" id="snapshot">Totals as shown on GoFundMe on November 8, 2026. The live total is on the GoFundMe page.</p>
+      </div>
+
+      <div class="cans" aria-label="Cans of pet food so far">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 10h24v28a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4z"/><ellipse cx="24" cy="10" rx="12" ry="4"/><path d="M12 22h24"/><g fill="currentColor" stroke="none"><ellipse cx="24" cy="33" rx="3.4" ry="2.8"/><circle cx="19.6" cy="28.8" r="1.5"/><circle cx="22.6" cy="26.4" r="1.5"/><circle cx="25.4" cy="26.4" r="1.5"/><circle cx="28.4" cy="28.8" r="1.5"/></g></svg>
+        <p><b id="cans-now">about 703 cans</b><br>That is what the money raised so far buys, counted the way our class tally sheet counts it: GoFundMe's 2.9% fee comes off first, then half goes to dog food at $1.50 a can and half to cat food at 80¢ a can.</p>
       </div>
 
       <div class="cta-row">
@@ -283,94 +318,80 @@ footer p{max-width:70ch; opacity:.9}
         <span class="toast" id="link-toast" role="status" aria-live="polite"></span>
       </div>
 
-      <div class="qr-block">
-        <div class="qr" id="qr-main" aria-label="QR code that opens our GoFundMe page" role="img"></div>
-        <div>
-          <p class="display">Scan to donate</p>
-          <p class="how">Point your phone camera at the code and tap the link that pops up. It opens our GoFundMe page, where you can give any amount in about a minute.</p>
-          <p class="url">https://www.gofundme.com/f/feeding-homeless-paws-mgmt453-team-b8fall-semester-2026</p>
-        </div>
-      </div>
-
-      <div class="impact" aria-label="What your donation does">
-        <div><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 28h32l-3 10H11z"/><path d="M12 28c0-6 5-9 12-9s12 3 12 9"/><circle cx="19" cy="23" r="1.2" fill="currentColor"/><circle cx="25" cy="21" r="1.2" fill="currentColor"/><circle cx="30" cy="24" r="1.2" fill="currentColor"/></svg><span>Food for homeless pets</span></div>
-        <div><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 24 24 10l16 14"/><path d="M12 21v17h24V21"/><g fill="currentColor" stroke="none"><ellipse cx="24" cy="31" rx="4" ry="3.2"/><circle cx="19" cy="26.5" r="1.7"/><circle cx="22.5" cy="24" r="1.7"/><circle cx="25.5" cy="24" r="1.7"/><circle cx="29" cy="26.5" r="1.7"/></g></svg><span>Care and shelter</span></div>
-        <div><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 40S7 29 7 18a8 8 0 0 1 15-4 8 8 0 0 1 15 4c0 11-13 22-13 22z"/><g fill="currentColor" stroke="none"><ellipse cx="24" cy="27" rx="3.6" ry="3"/><circle cx="19.5" cy="22.5" r="1.5"/><circle cx="22.6" cy="20" r="1.5"/><circle cx="25.4" cy="20" r="1.5"/><circle cx="28.5" cy="22.5" r="1.5"/></g></svg><span>A chance at a loving home</span></div>
-      </div>
-      <div class="hundred"><b>100%</b><span>of donations go to Centre County PAWS</span></div>
 
       <div class="facts">
         <span><b>Organizer</b> Brady Murray, State College, PA</span>
         <span><b>Beneficiary</b> Centre County PAWS</span>
+        <span><b>Created</b> October 23, 2026</span>
         <span><b>Category</b> Animals</span>
         <span><b>Tax deductible</b></span>
       </div>
     </article>
 
-    <!-- Shirt stand -->
-    <aside class="card pad shop" id="shop" aria-labelledby="shop-title">
-      <p class="eyebrow">Shirt sale</p>
-      <h2 id="shop-title">Wear it for the shelter</h2>
-      <p class="price"><b>$25</b> a shirt. The money for every shirt goes into the GoFundMe as a donation marked <b>T-shirt sale</b>, so it reaches PAWS the same way.</p>
-
-      <div class="field">
-        <span class="lbl" id="design-lbl">Design</span>
-        <div class="designs" role="group" aria-labelledby="design-lbl">
-          <button class="design" type="button" data-design="a" aria-pressed="true"><img src="img/shirt-a-back.jpg" alt="Shelter Pets design: dog and cat with Support Shelter Pets" loading="lazy"><span>Shelter Pets</span></button>
-          <button class="design" type="button" data-design="b" aria-pressed="false"><img src="img/shirt-b-back.jpg" alt="Varsity design: block letters, dog and cat, Helping pets in need" loading="lazy"><span>Varsity</span></button>
-          <button class="design" type="button" data-design="c" aria-pressed="false"><img src="img/shirt-c-back.jpg" alt="Badge design: round stamp with paw, For Pets in Need" loading="lazy"><span>Badge</span></button>
-          <button class="design" type="button" data-design="d" aria-pressed="false"><img src="img/shirt-d-back.jpg" alt="Scan to Donate design: dog and cat with QR code" loading="lazy"><span>Scan to Donate</span></button>
-        </div>
+    <!-- Product card -->
+    <aside class="card pad product" id="shirt" aria-labelledby="product-title">
+      <p class="eyebrow">Our product</p>
+      <h2 id="product-title">The Paws for a Cause tee</h2>
+      <div class="view">
+        <img src="img/tee-back.jpg" alt="Back of the Paws for a Cause tee: a tabby kitten and a pit bull drawn in navy, with the words Adopt, Foster, Support and three paw prints" data-side="back">
+        <img src="img/tee-front.jpg" alt="Front of the Paws for a Cause tee: a small PAWS for a Cause mark on the left chest" data-side="front" hidden>
+        <div class="flip" role="group" aria-label="Side"><button type="button" data-flip="back" aria-pressed="true">Back</button><button type="button" data-flip="front" aria-pressed="false">Front</button></div>
       </div>
-
-      <div class="field">
-        <span class="lbl" id="size-lbl">Size</span>
-        <div class="sizes" role="group" aria-labelledby="size-lbl">
-          <button class="size" type="button" data-size="S" aria-pressed="false">S</button>
-          <button class="size" type="button" data-size="M" aria-pressed="true">M</button>
-          <button class="size" type="button" data-size="L" aria-pressed="false">L</button>
-          <button class="size" type="button" data-size="XL" aria-pressed="false">XL</button>
-          <button class="size" type="button" data-size="2XL" aria-pressed="false">2XL</button>
-        </div>
-      </div>
-
-      <div class="field row2">
-        <div>
-          <span class="lbl" id="qty-lbl">Quantity</span>
-          <div class="qty" role="group" aria-labelledby="qty-lbl">
-            <button type="button" id="qty-minus" aria-label="One fewer shirt">−</button>
-            <output id="qty-out" for="qty-minus qty-plus">1</output>
-            <button type="button" id="qty-plus" aria-label="One more shirt">+</button>
-          </div>
-        </div>
-        <div>
-          <label for="buyer">Your name (for pickup)</label>
-          <input class="input" id="buyer" type="text" autocomplete="name" placeholder="First name" maxlength="40">
-        </div>
-      </div>
-
-      <div class="total"><span>Total to donate</span><b id="total">$25</b></div>
-
-      <div class="note">
-        <label for="order-note" class="lbl">Your order note</label>
-        <textarea id="order-note" readonly rows="3" aria-describedby="note-help">T-SHIRT SALE: 1 x Shelter Pets tee, size M</textarea>
-      </div>
+      <p class="blurb">The shirt we designed for the drive. A quiet mark on the chest and, on the back, two faces you would meet at the shelter.</p>
+      <ul class="specs">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg><span>Designed by our team for Centre County PAWS</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg><span>White tee, navy print, front and back</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg><span>Adopt · Foster · Support</span></li>
+      </ul>
       <div class="cta-row">
-        <button class="btn primary" id="copy-note" type="button">Copy order note</button>
-        <a class="btn gfm" id="shop-donate" href="https://www.gofundme.com/f/feeding-homeless-paws-mgmt453-team-b8fall-semester-2026/donate" target="_blank" rel="noopener">Donate $25 on GoFundMe</a>
+        <a class="btn primary" href="#product">See the full design</a>
       </div>
-      <p class="toast" id="note-toast" role="status" aria-live="polite"></p>
-
-      <ol class="steps" id="note-help">
-        <li>Pick your design, size and how many you want.</li>
-        <li>Copy the order note above.</li>
-        <li>Tap Donate, give the shirt total on GoFundMe and paste the note into the comment box with your donation.</li>
-        <li>We match your donation to your note and get your shirt to you.</li>
-      </ol>
-      <p class="fine">Comments on GoFundMe are public, so the note only carries your first name. Keep the donor name on your donation visible to us so we can match it.</p>
+      <p class="fine">Want one? Mention it in the note when you donate on GoFundMe, or ask anyone on Team B8.</p>
     </aside>
   </div>
   </div>
+
+  <section class="band" id="drive" aria-labelledby="drive-title">
+    <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">What we are doing</p>
+        <h2 id="drive-title">The PAWS Can Drive</h2>
+      </div>
+      <p>A two week push by Team B8 to put food in the bowls at Centre County PAWS, and our team term project for MGMT 215, Entrepreneurial Mindset, at Penn State.</p>
+    </div>
+    <div class="drive-grid">
+      <div class="card pad">
+        <div class="prose">
+          <p><strong>The task.</strong> Our class gave every team the same challenge: collect cans of dog food and cat food for Centre County PAWS, the nonprofit animal shelter near campus, without spending a cent of our own money. Donors can hand us real cans and bags, but most of the drive happens online, so we set up this GoFundMe and are spreading it through friends, family, texts and social media.</p>
+          <p><strong>Where the money goes.</strong> The GoFundMe is a charity fundraiser with Centre County PAWS, a registered 501(c)(3), as the beneficiary. Donations go to the shelter directly and are used to buy pet food for the dogs and cats living there.</p>
+          <p><strong>Who we are.</strong> Team B8, a group of Penn State students in MGMT 215, Entrepreneurial Mindset, at the Smeal College of Business, Fall 2026. Brady Murray is the organizer on GoFundMe. Student can drives for PAWS are a tradition in this class: <a href="https://www.psu.edu/news/smeal-college-business/story/greater-just-grade-smeal-management-class-gives-back-community" target="_blank" rel="noopener">read about past years on Penn State News</a>.</p>
+        </div>
+        <ol class="steps" aria-label="How it works">
+          <li>You donate any amount on our GoFundMe, or give us real cans or bags of pet food.</li>
+          <li>We count every dollar as cans using the class tally sheet, and the shelter turns it into food.</li>
+          <li>At the end of the drive the whole class adds up its cans and PAWS gets all of it.</li>
+        </ol>
+      </div>
+      <div class="card pad">
+        <p class="eyebrow" style="margin-bottom:12px">Our goals</p>
+        <div class="goals">
+          <div class="goal"><span class="num">$1K</span><div><b>Reach the GoFundMe goal</b><p>$1,000 is the goal we set on day one. On the class tally sheet that is about <span id="cans-goal">931</span> cans of pet food.</p></div></div>
+          <div class="goal"><span class="num">500</span><div><b>Pass 500 cans as a team</b><p>The team total our class treats as the big milestone of the drive. We crossed it with the donations we have so far.</p></div></div>
+          <div class="goal"><span class="num">0</span><div><b>Zero empty bowls</b><p>Every can we collect is a meal for a dog or cat at PAWS. That is the point of all of it.</p></div></div>
+        </div>
+        <div class="canbar" aria-label="Cans collected toward the goal">
+          <div class="lbl"><span>Cans so far</span><span id="cans-of">703 of 931</span></div>
+          <div class="track"><div class="fill" id="can-fill"></div><div class="tick" id="can-tick" style="left:53.7%"><span>500 can milestone</span></div></div>
+        </div>
+        <div class="rates">
+          <div class="rate"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 10h24v28a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4z"/><ellipse cx="24" cy="10" rx="12" ry="4"/></svg><div><b>$1.50</b><span>one can of dog food</span></div></div>
+          <div class="rate"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 14h20v22a4 4 0 0 1-4 4H18a4 4 0 0 1-4-4z"/><ellipse cx="24" cy="14" rx="10" ry="3.4"/></svg><div><b>80¢</b><span>one can of cat food</span></div></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
 
   <section class="band" id="story" aria-labelledby="story-title">
     <div class="wrap">
@@ -399,76 +420,40 @@ footer p{max-width:70ch; opacity:.9}
         <div class="factlist">
           <div><span>Fundraiser</span><b>Feeding Homeless PAWS -MGMT-453- Team B8-Fall semester 2026</b></div>
           <div><span>Organizer</span><b><span class="avatar" aria-hidden="true">B</span>Brady Murray<small>State College, PA</small></b></div>
-          <div><span>Beneficiary</span><b><span class="avatar" aria-hidden="true">C</span>Centre County PAWS</b></div>
+          <div><span>Beneficiary</span><b><span class="avatar" aria-hidden="true">C</span>Centre County PAWS<small>Charity fundraiser, tax deductible</small></b></div>
+          <div><span>Created</span><b>October 23, 2026</b></div>
           <div><span>Category</span><b>Animals</b></div>
-          <div><span>Tax</span><b>Tax deductible</b></div>
-          <div><span>Created</span><b>October 2026</b></div>
           <div><span>Goal</span><b>$1,000</b></div>
-          <div><span>Donations</span><b>8 donations · $755 raised<small>As shown on GoFundMe, November 7, 2026</small></b></div>
+          <div><span>Raised</span><b id="raised-2">$755 from 8 donations<small>as of November 8, 2026</small></b></div>
         </div>
       </div>
     </div>
     </div>
   </section>
 
-  <section class="band" id="shirts" aria-labelledby="shirts-title">
+  <section class="band" id="product" aria-labelledby="tee-title">
     <div class="wrap">
     <div class="section-head">
       <div>
-        <p class="eyebrow">The shirts</p>
-        <h2 id="shirts-title">Four designs, one cause</h2>
+        <p class="eyebrow">Our product</p>
+        <h2 id="tee-title">Adopt. Foster. Support.</h2>
       </div>
-      <p>White tee, navy print, $25 each. Flip any card to see the front and the back.</p>
+      <p>The Paws for a Cause tee, designed by Team B8. White shirt, navy print, a small mark on the front and the shelter's two kinds of residents on the back.</p>
     </div>
-    <div class="shirt-grid">
-      <article class="card shirt" data-shirt="a">
-        <div class="view">
-          <img src="img/shirt-a-back.jpg" alt="Back of the Shelter Pets shirt: Paws For A Cause lettering over a happy dog and a cat, with the words Support Shelter Pets" data-side="back">
-          <img src="img/shirt-a-front.jpg" alt="Front of the Shelter Pets shirt: Paws For A Cause lettering across the chest with a paw print and a heart" data-side="front" hidden>
-          <div class="flip" role="group" aria-label="Side"><button type="button" data-flip="back" aria-pressed="true">Back</button><button type="button" data-flip="front" aria-pressed="false">Front</button></div>
-        </div>
-        <div class="body">
-          <h3>Shelter Pets</h3>
-          <p class="desc">Big brush lettering on the chest. On the back, a dog and cat leaning on each other over the words Support Shelter Pets.</p>
-          <div class="foot"><b>$25</b><button class="btn primary" type="button" data-pick="a">Order this one</button></div>
-        </div>
-      </article>
-      <article class="card shirt" data-shirt="b">
-        <div class="view">
-          <img src="img/shirt-b-back.jpg" alt="Back of the Varsity shirt: block letters reading Paws For A Cause with a sketched paw, a dog and a cat and the words Helping pets in need" data-side="back">
-          <img src="img/shirt-b-front.jpg" alt="Front of the Varsity shirt: a small block letter Paws For A Cause logo on the left chest" data-side="front" hidden>
-          <div class="flip" role="group" aria-label="Side"><button type="button" data-flip="back" aria-pressed="true">Back</button><button type="button" data-flip="front" aria-pressed="false">Front</button></div>
-        </div>
-        <div class="body">
-          <h3>Varsity</h3>
-          <p class="desc">Small pocket logo on the front, block letters across the back with a sketched paw and the words Helping pets in need.</p>
-          <div class="foot"><b>$25</b><button class="btn primary" type="button" data-pick="b">Order this one</button></div>
-        </div>
-      </article>
-      <article class="card shirt" data-shirt="c">
-        <div class="view">
-          <img src="img/shirt-c-back.jpg" alt="Back of the Badge shirt: a round stamp with a large paw print, a dog and a cat peeking in and a banner reading For Pets In Need" data-side="back">
-          <img src="img/shirt-c-front.jpg" alt="Front of the Badge shirt: large Paws For A Cause brush lettering with a paw print and a heart" data-side="front" hidden>
-          <div class="flip" role="group" aria-label="Side"><button type="button" data-flip="back" aria-pressed="true">Back</button><button type="button" data-flip="front" aria-pressed="false">Front</button></div>
-        </div>
-        <div class="body">
-          <h3>Badge</h3>
-          <p class="desc">Bold lettering on the front. A round stamp on the back with a big paw, two little faces and a banner reading For Pets In Need.</p>
-          <div class="foot"><b>$25</b><button class="btn primary" type="button" data-pick="c">Order this one</button></div>
-        </div>
-      </article>
-      <article class="card shirt" data-shirt="d">
-        <div class="view">
-          <img src="img/shirt-d-back.jpg" alt="Back of the Scan to Donate shirt: Paws For A Cause lettering, a dog and a cat, and a Scan to Donate QR code" data-side="back">
-          <img src="img/shirt-d-front.jpg" alt="Front of the Scan to Donate shirt: small Paws For A Cause script with a paw on the left chest" data-side="front" hidden>
-          <div class="flip" role="group" aria-label="Side"><button type="button" data-flip="back" aria-pressed="true">Back</button><button type="button" data-flip="front" aria-pressed="false">Front</button></div>
-        </div>
-        <div class="body">
-          <h3>Scan to Donate</h3>
-          <p class="desc">Pocket script on the front. The back carries the dog and cat with a QR code, so the shirt itself asks people to give.</p>
-          <div class="foot"><b>$25</b><button class="btn primary" type="button" data-pick="d">Order this one</button></div>
-        </div>
-      </article>
+    <div class="tee-grid">
+      <figure class="card tee">
+        <img src="img/tee-front.jpg" alt="Front of the Paws for a Cause tee on a white shirt: PAWS in bold navy letters with for a Cause in script underneath, placed on the left chest">
+        <figcaption><b>Front</b><span>Left chest mark</span></figcaption>
+      </figure>
+      <figure class="card tee">
+        <img src="img/tee-back.jpg" alt="Back of the Paws for a Cause tee: a tabby kitten and a pit bull drawn in navy ink resting their paws on a line, the words Adopt, Foster, Support below them and three paw prints">
+        <figcaption><b>Back</b><span>Kitten, pit bull and the three words</span></figcaption>
+      </figure>
+    </div>
+    <div class="design-notes">
+      <div class="note"><b>Why these two</b><p>A kitten and a pit bull are the animals people pass over most at shelters. Putting them front and centre is the whole message.</p></div>
+      <div class="note"><b>Why one colour</b><p>Navy on white keeps printing simple and the shirt wearable every day, so the message keeps walking around campus after the drive ends.</p></div>
+      <div class="note"><b>How it was made</b><p>We ran the class ideation process: ten ideas each on slips of paper, a team vote, our own design against an AI alternate, then a final vote.</p></div>
     </div>
     </div>
   </section>
@@ -482,7 +467,7 @@ footer p{max-width:70ch; opacity:.9}
       </div>
     </div>
     <div class="poster-grid">
-      <img src="img/poster.jpg" alt="Paws for a Cause poster: Help Fill Empty Bellies, a golden retriever and a tabby cat wearing Penn State bandanas, a Scan to Donate QR code and the line Small donations. Big impact. Support Centre County PAWS">
+      <img src="img/poster.jpg" alt="Paws for a Cause poster: Help Fill Empty Bellies, a pit bull and a tabby kitten wearing navy paw print bandanas, a Scan to Donate QR code for our GoFundMe and the GoFundMe web address along the bottom">
       <div class="poster-copy">
         <p class="big">Small donations. Big impact.</p>
         <p>Our team made this poster for campus boards, group chats and stories. Screenshot it, post it, or print it and pin it up.</p>
@@ -491,10 +476,7 @@ footer p{max-width:70ch; opacity:.9}
           <li>Care and shelter</li>
           <li>A chance at a loving home</li>
         </ul>
-        <div class="qr-mini">
-          <div class="qr" id="qr-poster" role="img" aria-label="QR code that opens our GoFundMe page"></div>
-          <p>Scan to donate. Same code as the poster, straight to our GoFundMe.</p>
-        </div>
+        <p>The QR code on the poster opens our GoFundMe page. Point a phone camera at it and the donate page comes up.</p>
       </div>
     </div>
     </div>
@@ -507,17 +489,76 @@ footer p{max-width:70ch; opacity:.9}
         <p class="eyebrow">Where the money goes</p>
         <h2 id="paws-title">Centre County PAWS</h2>
       </div>
+      <p>A volunteer run, member supported, non euthanasia shelter that has been finding homes for Centre County's cats and dogs since 1980.</p>
     </div>
     <div class="paws-grid">
       <div class="card pad">
         <p class="quote">“Promote Animal Welfare and Safety with compassion through adoption, sheltering, education, and community assistance.”</p>
         <p class="cite">The mission of Centre County PAWS, in their words.</p>
+        <div class="paws-stats">
+          <div><b>500+</b><span>cats and dogs find homes through PAWS every year</span></div>
+          <div><b>100+</b><span>volunteers clean, feed, walk and care for the animals</span></div>
+          <div><b>52 / 120</b><span>average days a dog, then a cat, waits at the shelter for a home</span></div>
+        </div>
       </div>
       <div class="card pad paws-facts">
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>1401 Trout Road, State College, PA 16801. Visits by appointment.</span></div>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg><span>A no kill shelter founded by Centre County residents in 1980, in its own building on Trout Road since 2007.</span></div>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg><span>Houses dozens of cats and dogs at a time and finds homes for about 550 animals a year.</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>1401 Trout Road, State College, PA 16801, near the Walmart on Benner Pike.</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6.3 6.3l1.3-1.3a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2z"/></svg><span>(814) 237-8722</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg><span>Adoption, sheltering, spay and neuter assistance and education on responsible pet ownership. The shelter depends on donations for food, medical care and its building.</span></div>
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span><a href="https://www.centrecountypaws.org" target="_blank" rel="noopener">centrecountypaws.org</a> for adoptions, fostering and volunteering.</span></div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="band" id="videos" aria-labelledby="videos-title">
+    <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Why it matters</p>
+        <h2 id="videos-title">What a happy ending looks like</h2>
+      </div>
+      <p>Two short videos shared with our class about shelter dogs finding homes. Every can helps PAWS create more endings like these.</p>
+    </div>
+    <div class="video-grid">
+      <figure class="card video">
+        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/B7yOO4oKMVc" title="Shelter dog happy ending, video one" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <figcaption>A shelter dog's happy ending, part one. <a href="https://www.youtube.com/watch?v=B7yOO4oKMVc" target="_blank" rel="noopener">Watch on YouTube</a></figcaption>
+      </figure>
+      <figure class="card video">
+        <div class="frame"><iframe src="https://www.youtube-nocookie.com/embed/Ng2XjYt5elg" title="Shelter dog happy ending, video two" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+        <figcaption>A shelter dog's happy ending, part two. <a href="https://www.youtube.com/watch?v=Ng2XjYt5elg" target="_blank" rel="noopener">Watch on YouTube</a></figcaption>
+      </figure>
+    </div>
+    </div>
+  </section>
+
+  <section class="band" id="share" aria-labelledby="share-title">
+    <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Spread the word</p>
+        <h2 id="share-title">Forward this to one more person</h2>
+      </div>
+      <p>Most of a can drive happens in group chats. Copy the message, send it, and ask people to pass it on.</p>
+    </div>
+    <div class="share-grid">
+      <div class="card pad share">
+        <label for="share-msg">Ready to send</label>
+        <textarea id="share-msg" rows="6">Hi! My team at Penn State is collecting food for the homeless dogs and cats at Centre County PAWS. Every $1.50 is a can of dog food and every 80¢ is a can of cat food, and it all goes straight to the shelter. Could you chip in or forward this to someone who loves animals? https://www.gofundme.com/f/feeding-homeless-paws-mgmt453-team-b8fall-semester-2026</textarea>
+        <div class="cta-row">
+          <button class="btn primary" id="copy-msg" type="button">Copy the message</button>
+          <span class="toast" id="msg-toast" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+      <div class="card pad share">
+        <label for="share-url">The link</label>
+        <div class="linkbox">
+          <code id="share-url">https://www.gofundme.com/f/feeding-homeless-paws-mgmt453-team-b8fall-semester-2026</code>
+          <button class="btn ghost" id="copy-url" type="button">Copy</button>
+        </div>
+        <p class="toast" id="url-toast" role="status" aria-live="polite"></p>
+        <p style="margin-top:10px; font-size:.95rem; color:var(--muted)">Put it in a bio, a story, a group chat or a flyer. The QR code on the poster opens the same link.</p>
       </div>
     </div>
     </div>
@@ -527,8 +568,7 @@ footer p{max-width:70ch; opacity:.9}
 <footer>
   <div class="wrap">
     <p class="display">Paws for a Cause</p>
-    <p>A student fundraiser by Team B8 in MGMT 453 at Penn State, Fall 2026. Donations are collected on GoFundMe and go to Centre County PAWS. This site is run by the student team, not by GoFundMe or Centre County PAWS.</p>
-    <p>Buying a shirt? Donate the shirt total on GoFundMe and paste your order note in the comment. Questions about an order: leave them in the same comment and we will reply there.</p>
+    <p>A PAWS Can Drive by Team B8 in MGMT 215, Entrepreneurial Mindset, at Penn State's Smeal College of Business, Fall 2026. Donations are collected on GoFundMe and go to Centre County PAWS. None of the money comes from the team itself, in line with our project rules and the Smeal Honor Code. This site is run by the student team, not by GoFundMe or Centre County PAWS.</p>
     <p><a href="https://www.gofundme.com/f/feeding-homeless-paws-mgmt453-team-b8fall-semester-2026" target="_blank" rel="noopener">Our GoFundMe page</a> · <a href="https://www.centrecountypaws.org" target="_blank" rel="noopener">Centre County PAWS</a></p>
   </div>
 </footer>
@@ -537,8 +577,23 @@ footer p{max-width:70ch; opacity:.9}
 <script>
 (function(){
   const CAMPAIGN='https://www.gofundme.com/f/feeding-homeless-paws-mgmt453-team-b8fall-semester-2026';
-  const QR_SVG="<svg viewBox=\"0 0 530 530\" xmlns=\"http://www.w3.org/2000/svg\" class=\"segno\"><path transform=\"scale(10)\" class=\"qrline\" stroke=\"#1b3a78\" d=\"M2 2.5h7m3 0h4m1 0h7m1 0h1m8 0h2m1 0h3m2 0h1m1 0h7m-49 1h1m5 0h1m2 0h2m2 0h1m1 0h2m2 0h3m2 0h5m5 0h1m1 0h5m1 0h1m5 0h1m-49 1h1m1 0h3m1 0h1m10 0h1m3 0h1m2 0h1m3 0h2m3 0h1m1 0h3m1 0h2m1 0h1m1 0h3m1 0h1m-49 1h1m1 0h3m1 0h1m4 0h1m1 0h1m1 0h1m1 0h4m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m2 0h2m2 0h1m2 0h1m1 0h3m1 0h1m-49 1h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h1m2 0h2m1 0h2m1 0h6m1 0h2m1 0h2m2 0h2m4 0h1m1 0h3m1 0h1m-49 1h1m5 0h1m3 0h1m7 0h2m2 0h1m3 0h1m1 0h5m2 0h1m1 0h2m3 0h1m5 0h1m-49 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-41 1h3m3 0h1m1 0h1m1 0h2m1 0h2m3 0h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h2m-38 1h2m2 0h5m2 0h2m2 0h2m1 0h8m2 0h1m2 0h2m3 0h1m2 0h2m1 0h1m-45 1h3m5 0h4m2 0h1m2 0h3m1 0h1m1 0h1m2 0h1m2 0h3m4 0h1m2 0h1m1 0h2m2 0h1m1 0h1m-47 1h2m2 0h2m1 0h4m1 0h2m5 0h1m2 0h1m1 0h1m3 0h1m1 0h1m1 0h3m3 0h1m1 0h2m1 0h3m-46 1h4m2 0h1m1 0h1m9 0h1m4 0h2m1 0h2m3 0h1m1 0h1m1 0h1m1 0h4m1 0h2m1 0h3m-49 1h2m1 0h5m1 0h2m1 0h1m4 0h1m2 0h1m1 0h2m2 0h3m3 0h1m2 0h3m1 0h5m1 0h2m1 0h1m-49 1h1m3 0h2m2 0h3m1 0h1m1 0h3m2 0h1m4 0h3m1 0h1m2 0h3m1 0h4m5 0h2m1 0h2m-48 1h1m4 0h1m1 0h1m2 0h3m1 0h5m1 0h1m3 0h3m4 0h1m2 0h1m1 0h2m3 0h1m2 0h3m-47 1h2m1 0h1m2 0h1m3 0h2m2 0h1m1 0h2m1 0h1m3 0h3m2 0h5m5 0h2m1 0h1m1 0h1m-45 1h1m2 0h2m1 0h2m1 0h1m2 0h3m2 0h1m1 0h1m1 0h1m3 0h3m3 0h1m2 0h1m4 0h2m1 0h3m1 0h1m-46 1h2m5 0h1m1 0h1m1 0h1m1 0h1m1 0h5m1 0h2m4 0h2m2 0h1m1 0h4m1 0h3m1 0h2m3 0h1m-48 1h1m1 0h2m1 0h2m1 0h3m1 0h3m3 0h1m8 0h5m1 0h3m1 0h1m2 0h1m1 0h3m1 0h2m-49 1h3m2 0h1m3 0h1m1 0h1m5 0h1m1 0h3m2 0h2m2 0h3m2 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m-49 1h1m1 0h1m1 0h3m5 0h1m1 0h3m1 0h1m1 0h1m2 0h2m1 0h1m5 0h2m1 0h1m2 0h1m6 0h1m1 0h2m-49 1h1m2 0h1m3 0h4m1 0h2m1 0h2m1 0h2m1 0h1m1 0h3m4 0h1m1 0h2m1 0h1m3 0h1m1 0h2m-43 1h1m1 0h1m1 0h5m4 0h2m4 0h1m2 0h6m1 0h1m1 0h2m1 0h1m1 0h1m2 0h6m1 0h1m-46 1h2m1 0h1m3 0h1m1 0h1m4 0h3m2 0h3m3 0h2m3 0h1m1 0h1m2 0h1m1 0h1m1 0h1m3 0h3m1 0h1m-49 1h5m1 0h1m1 0h1m3 0h1m4 0h1m1 0h2m1 0h1m1 0h1m1 0h2m3 0h2m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m-45 1h1m3 0h2m2 0h1m2 0h8m3 0h3m1 0h1m2 0h1m2 0h5m3 0h2m1 0h2m-48 1h8m1 0h3m1 0h3m2 0h1m1 0h6m5 0h1m2 0h13m-48 1h3m5 0h3m2 0h2m3 0h2m1 0h1m2 0h1m1 0h4m1 0h2m2 0h1m1 0h2m1 0h2m1 0h1m3 0h1m-48 1h1m2 0h1m1 0h2m1 0h1m2 0h1m4 0h1m6 0h1m1 0h2m1 0h6m3 0h2m1 0h1m2 0h1m2 0h2m-47 1h2m5 0h1m1 0h1m3 0h1m1 0h6m1 0h3m2 0h3m2 0h4m2 0h1m6 0h3m-46 1h1m2 0h1m1 0h2m4 0h3m2 0h1m1 0h1m7 0h8m1 0h2m1 0h3m2 0h1m1 0h1m-47 1h1m1 0h2m1 0h3m3 0h4m2 0h2m3 0h1m1 0h2m2 0h1m1 0h2m2 0h2m1 0h6m-45 1h1m2 0h4m1 0h1m2 0h3m3 0h1m1 0h1m1 0h3m2 0h3m1 0h2m2 0h1m5 0h1m1 0h3m2 0h1m-47 1h1m1 0h1m4 0h3m3 0h1m2 0h2m1 0h1m4 0h1m2 0h1m1 0h1m2 0h1m3 0h1m2 0h4m2 0h2m-47 1h1m2 0h4m1 0h1m1 0h2m4 0h7m1 0h2m2 0h2m1 0h4m3 0h1m4 0h2m-45 1h4m2 0h1m1 0h1m1 0h2m4 0h1m1 0h2m1 0h4m1 0h1m2 0h4m2 0h2m1 0h1m2 0h1m2 0h3m-48 1h1m1 0h2m1 0h3m2 0h2m1 0h3m1 0h2m1 0h1m3 0h3m2 0h1m3 0h1m1 0h2m1 0h3m1 0h3m1 0h3m-49 1h4m3 0h10m1 0h2m3 0h3m1 0h1m1 0h2m1 0h2m1 0h1m2 0h1m1 0h1m2 0h6m-48 1h1m3 0h4m2 0h6m1 0h1m1 0h1m3 0h1m4 0h1m2 0h1m3 0h1m1 0h2m1 0h1m3 0h3m-47 1h3m4 0h1m1 0h1m1 0h1m3 0h3m5 0h6m1 0h2m4 0h2m2 0h1m1 0h2m2 0h1m-48 1h3m3 0h1m1 0h2m1 0h4m1 0h3m1 0h9m1 0h1m1 0h1m1 0h1m2 0h2m1 0h5m1 0h1m1 0h1m-41 1h1m1 0h1m1 0h1m2 0h1m1 0h3m2 0h1m3 0h1m2 0h1m1 0h1m2 0h2m1 0h1m1 0h2m3 0h3m1 0h1m-49 1h7m1 0h5m1 0h1m1 0h2m2 0h1m1 0h1m1 0h1m1 0h2m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h2m1 0h2m-49 1h1m5 0h1m3 0h6m3 0h4m3 0h1m3 0h1m2 0h5m2 0h1m3 0h2m2 0h1m-49 1h1m1 0h3m1 0h1m3 0h1m2 0h3m2 0h1m1 0h7m3 0h1m4 0h1m2 0h1m1 0h6m1 0h1m-48 1h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h4m2 0h1m1 0h1m1 0h1m2 0h1m9 0h2m1 0h2m1 0h1m1 0h1m2 0h2m-49 1h1m1 0h3m1 0h1m1 0h2m1 0h3m1 0h1m1 0h3m2 0h1m1 0h1m1 0h1m2 0h1m1 0h1m2 0h4m1 0h1m3 0h3m-46 1h1m5 0h1m7 0h3m5 0h3m6 0h4m1 0h2m2 0h2m3 0h2m-47 1h7m4 0h1m1 0h1m6 0h1m3 0h1m1 0h3m1 0h1m2 0h6m4 0h1m1 0h4\"/><g id=\"badge\"><rect x=\"206.7\" y=\"206.7\" width=\"116.6\" height=\"116.6\" rx=\"21.0\" fill=\"#ffffff\"/>\n<g fill=\"#1b3a78\" transform=\"translate(265.0,272.0) scale(1.1660)\">\n<ellipse cx=\"0\" cy=\"10\" rx=\"19\" ry=\"16\"/>\n<ellipse cx=\"-24\" cy=\"-8\" rx=\"8\" ry=\"11\" transform=\"rotate(-20 -24 -8)\"/>\n<ellipse cx=\"-9\" cy=\"-22\" rx=\"8\" ry=\"11\" transform=\"rotate(-6 -9 -22)\"/>\n<ellipse cx=\"9\" cy=\"-22\" rx=\"8\" ry=\"11\" transform=\"rotate(6 9 -22)\"/>\n<ellipse cx=\"24\" cy=\"-8\" rx=\"8\" ry=\"11\" transform=\"rotate(20 24 -8)\"/>\n</g></g></svg>";
-  for(const id of ['qr-main','qr-poster']){ const el=document.getElementById(id); if(el) el.innerHTML=QR_SVG; }
+
+  /* ---------- campaign numbers: change these two lines when the GoFundMe moves ---------- */
+  const RAISED=755, GOAL=1000, DONATIONS=8, SNAPSHOT='November 9, 2026';
+  const DOG_CAN=1.5, CAT_CAN=0.8, GFM_FEE=0.029, MILESTONE=500;   // same numbers as the class TTP-1-c tally sheet
+  const cans=d=>{ const net=d*(1-GFM_FEE); return Math.round((net/2)/DOG_CAN+(net/2)/CAT_CAN); };
+  const money=n=>'$'+n.toLocaleString('en-US');
+  const pct=Math.min(100,Math.round(RAISED/GOAL*100));
+  const set=(id,t)=>{ const e=document.getElementById(id); if(e) e.textContent=t; };
+  set('raised',money(RAISED)); set('goal',money(GOAL)); set('donations',String(DONATIONS)); set('pct',pct+'%');
+  set('pill-text',money(RAISED)+' raised of '+money(GOAL));
+  set('snapshot','Totals as shown on GoFundMe on '+SNAPSHOT+'. The live total is on the GoFundMe page.');
+  set('cans-now','about '+cans(RAISED).toLocaleString('en-US')+' cans');
+  set('cans-of',cans(RAISED).toLocaleString('en-US')+' of '+cans(GOAL).toLocaleString('en-US'));
+  set('cans-goal',cans(GOAL).toLocaleString('en-US'));
+  const r2=document.getElementById('raised-2'); if(r2){ r2.innerHTML=''; r2.append(money(RAISED)+' from '+DONATIONS+' donations'); const s=document.createElement('small'); s.textContent='as of '+SNAPSHOT; r2.append(s); }
+  const tick=document.getElementById('can-tick'); if(tick) tick.style.left=Math.min(100,MILESTONE/cans(GOAL)*100).toFixed(1)+'%';
+  requestAnimationFrame(()=>{ const b=document.getElementById('bar'); if(b) b.style.width=pct+'%'; const f=document.getElementById('can-fill'); if(f) f.style.width=Math.min(100,cans(RAISED)/cans(GOAL)*100).toFixed(1)+'%'; });
 
   /* ---------- copy helpers ---------- */
   function copyText(text, toastEl, okMsg){
@@ -550,47 +605,21 @@ footer p{max-width:70ch; opacity:.9}
       document.body.removeChild(ta);
       if(ok) done(); else { toastEl.textContent='Select the text and copy it yourself.'; }
     };
-    if(navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(text).then(done, fallback);
-    } else fallback();
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done, fallback); } else fallback();
   }
   document.getElementById('copy-link').addEventListener('click', ()=>copyText(CAMPAIGN, document.getElementById('link-toast'), 'Link copied'));
+  document.getElementById('copy-url').addEventListener('click', ()=>copyText(CAMPAIGN, document.getElementById('url-toast'), 'Link copied'));
+  document.getElementById('copy-msg').addEventListener('click', ()=>copyText(document.getElementById('share-msg').value, document.getElementById('msg-toast'), 'Message copied. Paste it into a text or a post.'));
 
-  /* ---------- shirt stand ---------- */
-  const PRICE=25;
-  const DESIGNS={a:'Shelter Pets', b:'Varsity', c:'Badge', d:'Scan to Donate'};
-  const state={design:'a', size:'M', qty:1, name:''};
-  const qtyOut=document.getElementById('qty-out'), totalEl=document.getElementById('total'), noteEl=document.getElementById('order-note'), shopDonate=document.getElementById('shop-donate');
-  function fmt(n){ return '$'+n.toLocaleString('en-US'); }
-  function render(){
-    qtyOut.value=state.qty; qtyOut.textContent=state.qty;
-    const total=PRICE*state.qty; totalEl.textContent=fmt(total);
-    shopDonate.textContent='Donate '+fmt(total)+' on GoFundMe';
-    const name=state.name.trim().replace(/\s+/g,' ');
-    noteEl.value='T-SHIRT SALE: '+state.qty+' x '+DESIGNS[state.design]+' tee'+(state.qty>1?'s':'')+', size '+state.size+(name?', for '+name:'');
-    document.querySelectorAll('.design').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.design===state.design)));
-    document.querySelectorAll('.size').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.size===state.size)));
-  }
-  document.querySelectorAll('.design').forEach(b=>b.addEventListener('click', ()=>{ state.design=b.dataset.design; render(); }));
-  document.querySelectorAll('.size').forEach(b=>b.addEventListener('click', ()=>{ state.size=b.dataset.size; render(); }));
-  document.getElementById('qty-minus').addEventListener('click', ()=>{ state.qty=Math.max(1,state.qty-1); render(); });
-  document.getElementById('qty-plus').addEventListener('click', ()=>{ state.qty=Math.min(20,state.qty+1); render(); });
-  document.getElementById('buyer').addEventListener('input', e=>{ state.name=e.target.value; render(); });
-  document.getElementById('copy-note').addEventListener('click', ()=>copyText(noteEl.value, document.getElementById('note-toast'), 'Order note copied. Paste it into the comment when you donate.'));
-  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
-  document.querySelectorAll('[data-pick]').forEach(b=>b.addEventListener('click', ()=>{
-    state.design=b.dataset.pick; render();
-    document.getElementById('shop').scrollIntoView({behavior: reduce.matches?'auto':'smooth', block:'start'});
-    const t=document.getElementById('note-toast'); t.textContent=DESIGNS[state.design]+' selected. Pick a size and quantity.'; setTimeout(()=>{ if(t.textContent.indexOf('selected')>-1) t.textContent=''; }, 3500);
+  /* ---------- product card front/back ---------- */
+  const card=document.querySelector('.product');
+  card.querySelectorAll('[data-flip]').forEach(btn=>btn.addEventListener('click', ()=>{
+    const side=btn.dataset.flip;
+    card.querySelectorAll('img[data-side]').forEach(img=>{ img.hidden = img.dataset.side!==side; });
+    card.querySelectorAll('[data-flip]').forEach(b=>b.setAttribute('aria-pressed', String(b===btn)));
   }));
-  document.querySelectorAll('.shirt').forEach(card=>{
-    card.querySelectorAll('[data-flip]').forEach(btn=>btn.addEventListener('click', ()=>{
-      const side=btn.dataset.flip;
-      card.querySelectorAll('img[data-side]').forEach(img=>{ img.hidden = img.dataset.side!==side; });
-      card.querySelectorAll('[data-flip]').forEach(b=>b.setAttribute('aria-pressed', String(b===btn)));
-    }));
-  });
-  render();
+
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
 
   /* ---------- shared drawing helpers (original paper cutout style) ---------- */
   let colors={};
@@ -605,7 +634,6 @@ footer p{max-width:70ch; opacity:.9}
   function pawPathTo(c,x,y,u){ el(c,x,y+u*.55,u*.75,u*.62); el(c,x-u*.9,y-u*.2,u*.3,u*.44,-.35); el(c,x-u*.32,y-u*.68,u*.3,u*.44,-.1); el(c,x+u*.32,y-u*.68,u*.3,u*.44,.1); el(c,x+u*.9,y-u*.2,u*.3,u*.44,.35); }
   function cloudPath(c,x,y,u){ el(c,x,y,u*1.3,u*.6); el(c,x-u*.6,y-u*.25,u*.6,u*.55); el(c,x+u*.3,y-u*.4,u*.75,u*.7); el(c,x+u*.9,y-u*.1,u*.5,u*.45); }
 
-  // silhouettes go on the ink layer; small accents (eye, collar) are drawn on top afterwards
   function drawDog(c,x,y,u,walk,eat,wag){
     c.lineCap='round'; c.lineWidth=9*u; c.strokeStyle=colors.ink;
     const legs=[[-24,0],[-12,Math.PI],[14,Math.PI*.9],[26,Math.PI*1.9]];
@@ -652,7 +680,7 @@ footer p{max-width:70ch; opacity:.9}
     const ctx=canvas.getContext('2d'); if(!ctx) return null;
     const layer=document.createElement('canvas'), lctx=layer.getContext('2d');
     const softc=document.createElement('canvas'), sctx=softc.getContext('2d');
-    const S={W:0,H:0,dpr:1,s:1,groundY:0,bowlX:0,houseX:0,actors:[],hearts:[],crumbs:[],nextKind:'cat',spawnTimer:5,bowlFill:1,lastT:0,running:false,visible:true};
+    const S={W:0,H:0,dpr:1,s:1,groundY:0,bowlX:0,houseX:0,actors:[],hearts:[],nextKind:'cat',spawnTimer:5,bowlFill:1,lastT:0,running:false,visible:true};
     function resize(){
       const r=canvas.getBoundingClientRect(); S.W=Math.max(1,Math.round(r.width)); S.H=Math.max(1,Math.round(r.height)); S.dpr=Math.min(2,window.devicePixelRatio||1);
       for(const c of [canvas,layer,softc]){ c.width=Math.round(S.W*S.dpr); c.height=Math.round(S.H*S.dpr); }
@@ -836,11 +864,7 @@ footer p{max-width:70ch; opacity:.9}
   function startAll(){ if(stage) stage.start(); if(ambient) ambient.start(); }
   window.addEventListener('resize', ()=>{ if(stage){ stage.resize(); stage.redraw(); } if(ambient){ ambient.resize(); ambient.redraw(); } });
   document.addEventListener('visibilitychange', ()=>{ if(stage) stage.redraw(); });
-  const recolor=()=>{ readColors(); if(stage) stage.redraw(); if(ambient) ambient.redraw(); };
-  const dark=matchMedia('(prefers-color-scheme: dark)');
-  if(dark.addEventListener) dark.addEventListener('change', recolor);
   if(reduce.addEventListener) reduce.addEventListener('change', ()=>{ readColors(); startAll(); });
-  new MutationObserver(recolor).observe(document.documentElement,{attributes:true, attributeFilter:['data-theme']});
   startAll();
 })();
 </script>

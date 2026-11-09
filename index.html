@@ -1,0 +1,848 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Paws for a Cause</title>
+<meta name="description" content="Team B8 at Penn State is raising money for Centre County PAWS, the no kill shelter in State College. Donate on our GoFundMe or buy a Paws for a Cause shirt.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%231b3a78'%3E%3Cellipse cx='50' cy='66' rx='22' ry='18'/%3E%3Cellipse cx='22' cy='42' rx='9' ry='13' transform='rotate(-20 22 42)'/%3E%3Cellipse cx='40' cy='26' rx='9' ry='13' transform='rotate(-6 40 26)'/%3E%3Cellipse cx='60' cy='26' rx='9' ry='13' transform='rotate(6 60 26)'/%3E%3Cellipse cx='78' cy='42' rx='9' ry='13' transform='rotate(20 78 42)'/%3E%3C/g%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Paws for a Cause">
+<meta property="og:description" content="Team B8 at Penn State is raising money for Centre County PAWS, the no kill shelter in State College. Donate on our GoFundMe or buy a Paws for a Cause shirt.">
+<meta property="og:url" content="https://aryamanajmera.github.io/paws-for-a-cause/">
+<meta property="og:image" content="https://aryamanajmera.github.io/paws-for-a-cause/img/poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Nunito:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: plain white page (single light look, by request) with paper-cutout animals moving behind everything and a full-bleed rescue scene under the hero; GoFundMe stage centre, shirt stand beside it; story, shirts, poster, shelter below. */
+:root{
+  color-scheme:light;
+  --bg:#ffffff; --surface:rgba(255,255,255,.96); --surface-solid:#ffffff; --surface-2:#f3f6fb;
+  --ink:#13213f; --muted:#55658a; --line:#dfe6f1;
+  --navy:#1b3a78; --navy-deep:#112a5e; --sky:#a9c9ef; --sky-soft:#dbe7f8;
+  --gold:#e9b45a; --coral:#e5706b; --gfm:#02a95c; --gfm-ink:#ffffff;
+  --btn-bg:#1b3a78; --btn-fg:#ffffff; --accent:#1b3a78; --focus:#2f6fd6;
+  --qr-bg:#ffffff; --footer-bg:#112a5e; --footer-fg:#e8eefb; --footer-link:#cfe0ff;
+  --scene-ink:#1b3a78; --scene-soft:#9fc0ea; --scene-ground:#c7d2e3; --scene-heart:#e5706b; --scene-sun:#f0c165; --scene-eye:#ffffff;
+  --stage-alpha:.95; --stage-soft-alpha:1; --ambient-alpha:.16; --ambient-paw-alpha:.06;
+  --font-display:'Caveat Brush','Comic Sans MS','Segoe Print',cursive;
+  --font-body:'Nunito','Avenir Next','Segoe UI',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--font-body); font-size:17px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:10; background:var(--bg)}
+a{color:var(--accent)}
+img{max-width:100%; height:auto; display:block}
+:focus-visible{outline:3px solid var(--focus); outline-offset:3px; border-radius:6px}
+h1,h2,h3{text-wrap:balance; margin:0}
+p{margin:0}
+.display{font-family:var(--font-display); font-weight:400; letter-spacing:.005em; line-height:.95}
+.eyebrow{font-size:.78rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+.wrap{max-width:1180px; margin:0 auto; padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* ambient background and page stacking */
+#scene{position:fixed; inset:0; width:100%; height:100%; z-index:0; pointer-events:none}
+.page{position:relative; z-index:1; overflow-x:clip}
+
+/* top bar */
+.topbar{position:sticky; top:env(safe-area-inset-top,0px); z-index:9; background:var(--surface); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex; align-items:center; gap:10px 18px; min-height:60px; flex-wrap:wrap; padding-block:8px}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink)}
+.brand .display{font-size:1.7rem; line-height:1; white-space:nowrap}
+.brand svg{width:30px; height:30px; flex:none; color:var(--navy)}
+.nav{display:flex; gap:2px; margin-left:auto; max-width:100%; overflow-x:auto; scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{text-decoration:none; color:var(--ink); font-weight:700; font-size:.95rem; padding:6px 10px; border-radius:999px; white-space:nowrap}
+.nav a:hover{background:var(--surface-2)}
+.pill{display:inline-flex; align-items:center; gap:8px; background:var(--sky-soft); color:var(--navy-deep); border-radius:999px; padding:6px 12px; font-weight:800; font-size:.85rem; white-space:nowrap; font-variant-numeric:tabular-nums}
+.pill i{width:8px; height:8px; border-radius:50%; background:var(--gfm); display:inline-block}
+@media (max-width:760px){
+  .topbar .wrap{gap:4px 12px; padding-block:8px 6px}
+  .brand{margin-right:auto}
+  .nav{order:3; flex:1 1 100%; margin-left:-6px; padding-inline:6px}
+}
+
+/* hero */
+.hero{text-align:center; padding-block:clamp(32px,6vw,72px) 8px; overflow:clip}
+.hero .eyebrow{margin-bottom:14px}
+.hero h1{font-size:clamp(3.6rem,11vw,8.2rem); color:var(--navy); position:relative; display:inline-block}
+.hero h1 .paw{position:absolute; right:-.5em; top:-.08em; width:.5em; height:.5em; color:var(--sky); transform:rotate(18deg)}
+.hero .tag{font-family:var(--font-display); font-size:clamp(1.7rem,4.2vw,2.8rem); color:var(--ink); margin-top:8px; line-height:1.05}
+.hero .tag mark{background:linear-gradient(transparent 55%, var(--sky-soft) 55%); color:inherit; padding:0 .15em}
+.hero .lede{max-width:46rem; margin:16px auto 0; color:var(--muted); font-size:1.02rem}
+
+/* rescue scene band */
+.stage-band{position:relative; width:100%; height:clamp(200px,24vw,300px); margin-top:6px}
+#stage{position:absolute; inset:0; width:100%; height:100%; display:block}
+
+/* stage grid */
+.stage{display:grid; grid-template-columns:minmax(0,7fr) minmax(0,5fr); gap:22px; align-items:start; padding-block:0 28px; margin-top:14px}
+@media (max-width:900px){ .stage{grid-template-columns:1fr} }
+.card{background:var(--surface); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border:1px solid var(--line); border-radius:22px; box-shadow:0 18px 50px -30px rgba(17,42,94,.45)}
+.card.pad{padding:clamp(20px,3.2vw,34px)}
+.gfm-card h2{font-size:clamp(1.45rem,2.6vw,2rem); line-height:1.15; font-weight:800; letter-spacing:-.01em; margin-top:8px}
+.gfm-card .tagline{margin-top:10px; font-size:1.08rem; color:var(--muted)}
+.gfm-head{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.gfm-head .who{font-weight:700; color:var(--muted); font-size:.92rem}
+.gfm-wordmark{display:inline-flex; align-items:center; gap:6px; background:var(--gfm); color:var(--gfm-ink); border-radius:8px; padding:3px 9px; font-weight:800; font-size:.8rem; letter-spacing:.02em}
+.progress{margin-top:22px}
+.progress .bar{height:12px; background:var(--surface-2); border-radius:999px; overflow:hidden; border:1px solid var(--line)}
+.progress .bar i{display:block; height:100%; width:5%; min-width:14px; background:linear-gradient(90deg,var(--gfm),#5ad48f); border-radius:999px}
+.stats{display:flex; gap:22px; flex-wrap:wrap; margin-top:12px; font-variant-numeric:tabular-nums}
+.stats b{font-size:1.6rem; font-weight:800; line-height:1; display:block}
+.stats span{font-size:.82rem; color:var(--muted); font-weight:700}
+.snapshot{font-size:.8rem; color:var(--muted); margin-top:8px}
+.cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:20px; align-items:center}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:8px; border:0; border-radius:14px; padding:14px 22px; font:inherit; font-weight:800; font-size:1.02rem; text-decoration:none; cursor:pointer; line-height:1.1; min-height:50px}
+.btn.primary{background:var(--btn-bg); color:var(--btn-fg)}
+.btn.gfm{background:var(--gfm); color:var(--gfm-ink); box-shadow:0 12px 24px -14px rgba(2,169,92,.8)}
+.btn.ghost{background:transparent; color:var(--ink); border:2px solid var(--line)}
+.btn:hover{filter:brightness(1.05)}
+.btn:active{transform:translateY(1px)}
+.btn svg{width:18px; height:18px}
+.qr-block{display:grid; grid-template-columns:150px minmax(0,1fr); gap:18px; align-items:center; margin-top:24px; padding:16px; border:1px dashed var(--line); border-radius:18px; background:var(--surface-2)}
+@media (max-width:480px){ .qr-block{grid-template-columns:1fr; justify-items:center; text-align:center} }
+.qr{background:var(--qr-bg); border-radius:14px; padding:8px; width:150px; height:150px}
+.qr svg{width:100%; height:100%; display:block}
+.qr-block .display{font-size:1.9rem; color:var(--navy); line-height:1}
+.qr-block .url{font-size:.82rem; color:var(--muted); word-break:break-all; margin-top:6px; user-select:all}
+.qr-block .how{font-size:.92rem; margin-top:4px}
+.impact{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:22px}
+@media (max-width:560px){ .impact{grid-template-columns:1fr} }
+.impact div{display:flex; gap:10px; align-items:flex-start; font-weight:700; font-size:.95rem; line-height:1.3}
+.impact svg{width:30px; height:30px; flex:none; color:var(--navy)}
+.hundred{margin-top:18px; display:flex; align-items:center; gap:12px; background:var(--sky-soft); color:var(--navy-deep); border-radius:14px; padding:12px 16px; font-weight:800}
+.hundred b{font-family:var(--font-display); font-size:2rem; font-weight:400; line-height:1}
+.facts{display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:20px; font-size:.9rem; color:var(--muted)}
+.facts b{color:var(--ink); font-weight:800}
+
+/* shop */
+.shop h2{font-family:var(--font-display); font-size:2.4rem; color:var(--navy); line-height:1; margin-top:6px}
+.shop .price{font-size:1rem; color:var(--muted); margin-top:8px}
+.shop .price b{color:var(--ink); font-size:1.25rem}
+.designs{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin-top:16px}
+@media (max-width:420px){ .designs{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.design{border:2px solid var(--line); background:var(--surface-solid); border-radius:14px; padding:6px; cursor:pointer; text-align:center; font:inherit; color:var(--ink)}
+.design img{border-radius:9px; aspect-ratio:3/4; object-fit:cover; width:100%}
+.design span{display:block; font-size:.74rem; font-weight:800; margin-top:6px; line-height:1.15}
+.design[aria-pressed="true"]{border-color:var(--navy); box-shadow:0 0 0 3px var(--sky-soft)}
+.field{margin-top:16px}
+.field label,.field .lbl{display:block; font-size:.8rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:8px}
+.sizes{display:flex; gap:6px; flex-wrap:wrap}
+.size{min-width:46px; padding:8px 10px; border-radius:10px; border:2px solid var(--line); background:var(--surface-solid); font:inherit; font-weight:800; color:var(--ink); cursor:pointer}
+.size[aria-pressed="true"]{background:var(--btn-bg); color:var(--btn-fg); border-color:var(--btn-bg)}
+.row2{display:grid; grid-template-columns:auto minmax(0,1fr); gap:14px; align-items:end}
+.qty{display:inline-flex; align-items:center; border:2px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface-solid)}
+.qty button{width:40px; height:42px; border:0; background:transparent; font:inherit; font-size:1.3rem; font-weight:800; color:var(--ink); cursor:pointer}
+.qty output{min-width:34px; text-align:center; font-weight:800; font-variant-numeric:tabular-nums}
+.input{width:100%; border:2px solid var(--line); border-radius:12px; padding:10px 12px; font:inherit; background:var(--surface-solid); color:var(--ink); min-height:42px}
+.total{display:flex; justify-content:space-between; align-items:baseline; margin-top:18px; padding-top:14px; border-top:1px solid var(--line)}
+.total b{font-size:1.7rem; font-weight:800; font-variant-numeric:tabular-nums}
+.note{margin-top:14px}
+.note textarea{width:100%; resize:none; border:2px solid var(--line); border-radius:12px; padding:10px 12px; font:inherit; font-weight:700; background:var(--surface-2); color:var(--ink); min-height:72px; line-height:1.4}
+.shop .cta-row{margin-top:14px}
+.shop .cta-row .btn{flex:1 1 auto}
+.toast{font-size:.85rem; font-weight:800; color:var(--gfm); min-height:1.2em; margin-top:8px}
+.steps{list-style:none; padding:0; margin:18px 0 0; display:grid; gap:10px; counter-reset:step}
+.steps li{display:grid; grid-template-columns:30px minmax(0,1fr); gap:10px; align-items:start; font-size:.93rem; line-height:1.4}
+.steps li::before{counter-increment:step; content:counter(step); width:30px; height:30px; border-radius:50%; background:var(--sky-soft); color:var(--navy-deep); font-weight:800; display:grid; place-items:center; font-size:.9rem}
+.fine{font-size:.82rem; color:var(--muted); margin-top:12px}
+
+/* sections */
+section.band{padding-block:clamp(28px,5vw,56px)}
+.section-head{display:flex; align-items:end; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:22px}
+.section-head h2{font-family:var(--font-display); font-size:clamp(2.4rem,5vw,3.6rem); color:var(--navy); line-height:1}
+.section-head p{color:var(--muted); max-width:40rem}
+
+.story-grid{display:grid; grid-template-columns:minmax(0,7fr) minmax(0,4fr); gap:22px; align-items:start}
+@media (max-width:900px){ .story-grid{grid-template-columns:1fr} }
+.story{font-size:1.12rem; line-height:1.7; max-width:65ch; display:grid; gap:1.1em}
+.story p:first-child{font-family:var(--font-display); font-size:2.1rem; line-height:1.05; color:var(--navy)}
+.factlist{display:grid; gap:12px; font-size:.95rem}
+.factlist div{display:grid; grid-template-columns:110px minmax(0,1fr); gap:10px; padding-bottom:12px; border-bottom:1px solid var(--line)}
+.factlist div:last-child{border:0; padding-bottom:0}
+.factlist span{color:var(--muted); font-weight:700; font-size:.8rem; letter-spacing:.06em; text-transform:uppercase; padding-top:3px}
+.factlist b{font-weight:800}
+.factlist small{display:block; color:var(--muted); font-weight:600}
+.avatar{display:inline-grid; place-items:center; width:28px; height:28px; border-radius:50%; background:var(--sky-soft); color:var(--navy-deep); font-weight:800; font-size:.85rem; margin-right:8px; vertical-align:middle}
+
+.shirt-grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px}
+@media (max-width:1000px){ .shirt-grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:460px){ .shirt-grid{grid-template-columns:1fr} }
+.shirt{display:flex; flex-direction:column; overflow:hidden}
+.shirt .view{position:relative; background:var(--surface-solid); border-bottom:1px solid var(--line)}
+.shirt .view img{width:100%; aspect-ratio:4/5; object-fit:cover}
+.flip{position:absolute; left:10px; bottom:10px; display:inline-flex; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:3px; backdrop-filter:blur(6px)}
+.flip button{border:0; background:transparent; font:inherit; font-weight:800; font-size:.78rem; padding:5px 10px; border-radius:999px; color:var(--ink); cursor:pointer}
+.flip button[aria-pressed="true"]{background:var(--btn-bg); color:var(--btn-fg)}
+.shirt .body{padding:16px 18px 18px; display:grid; gap:8px}
+.shirt h3{font-family:var(--font-display); font-size:1.8rem; line-height:1; color:var(--navy)}
+.shirt .desc{font-size:.92rem; color:var(--muted); line-height:1.45}
+.shirt .foot{display:flex; justify-content:space-between; align-items:center; margin-top:6px; gap:10px}
+.shirt .foot b{font-size:1.2rem; font-weight:800}
+.shirt .foot .btn{padding:10px 14px; min-height:40px; font-size:.9rem}
+
+.poster-grid{display:grid; grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:28px; align-items:center}
+@media (max-width:900px){ .poster-grid{grid-template-columns:1fr} }
+.poster-grid img{border-radius:18px; box-shadow:0 24px 60px -30px rgba(17,42,94,.5); width:100%; max-width:520px; margin:0 auto}
+.poster-copy{display:grid; gap:14px}
+.poster-copy .big{font-family:var(--font-display); font-size:clamp(2.2rem,4.6vw,3.4rem); color:var(--navy); line-height:1}
+.poster-copy ul{margin:0; padding-left:1.2em; color:var(--muted)}
+.poster-copy .qr-mini{display:flex; gap:14px; align-items:center; margin-top:4px}
+.poster-copy .qr{width:120px; height:120px; flex:none}
+
+.paws-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:22px}
+@media (max-width:800px){ .paws-grid{grid-template-columns:1fr} }
+.quote{font-family:var(--font-display); font-size:clamp(1.8rem,3.4vw,2.5rem); line-height:1.1; color:var(--navy)}
+.cite{color:var(--muted); font-size:.9rem; margin-top:10px}
+.paws-facts{display:grid; gap:10px; font-size:1rem}
+.paws-facts div{display:flex; gap:12px; align-items:flex-start}
+.paws-facts svg{width:26px; height:26px; flex:none; color:var(--navy); margin-top:2px}
+
+footer{background:var(--footer-bg); color:var(--footer-fg); margin-top:30px}
+footer .wrap{padding-block:34px 40px; display:grid; gap:14px; font-size:.92rem}
+footer .display{font-size:2.2rem; line-height:1}
+footer a{color:var(--footer-link)}
+footer p{max-width:70ch; opacity:.9}
+
+@media (prefers-reduced-motion: reduce){ .btn:active{transform:none} }
+</style>
+</head>
+<body>
+<canvas id="scene" aria-hidden="true"></canvas>
+
+<div class="page">
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Paws for a Cause, back to top">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><ellipse cx="50" cy="66" rx="22" ry="18"/><ellipse cx="22" cy="42" rx="9" ry="13" transform="rotate(-20 22 42)"/><ellipse cx="40" cy="26" rx="9" ry="13" transform="rotate(-6 40 26)"/><ellipse cx="60" cy="26" rx="9" ry="13" transform="rotate(6 60 26)"/><ellipse cx="78" cy="42" rx="9" ry="13" transform="rotate(20 78 42)"/></g></svg>
+      <span class="display">Paws for a Cause</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#donate">Donate</a>
+      <a href="#shop">Shirts</a>
+      <a href="#story">Story</a>
+      <a href="#poster">Poster</a>
+      <a href="#paws">PAWS</a>
+    </nav>
+    <span class="pill" id="pill"><i aria-hidden="true"></i>$755 raised of $1,000</span>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Team B8 · MGMT 453 · Penn State · Fall 2026</p>
+      <h1 class="display">Paws for a Cause
+        <svg class="paw" viewBox="0 0 100 100" aria-hidden="true"><g fill="currentColor"><ellipse cx="50" cy="66" rx="22" ry="18"/><ellipse cx="22" cy="42" rx="9" ry="13" transform="rotate(-20 22 42)"/><ellipse cx="40" cy="26" rx="9" ry="13" transform="rotate(-6 40 26)"/><ellipse cx="60" cy="26" rx="9" ry="13" transform="rotate(6 60 26)"/><ellipse cx="78" cy="42" rx="9" ry="13" transform="rotate(20 78 42)"/></g></svg>
+      </h1>
+      <p class="tag"><mark>Help Fill Empty Bellies</mark></p>
+      <p class="lede">We are a student team raising money for Centre County PAWS, the no kill shelter on Trout Road in State College. Every donation on our GoFundMe, and every shirt we sell, buys food and daily care for the dogs and cats waiting there for a home.</p>
+    </div>
+  </section>
+
+  <div class="stage-band" aria-hidden="true"><canvas id="stage"></canvas></div>
+
+  <div class="wrap">
+  <div class="stage">
+    <!-- GoFundMe stage -->
+    <article class="card pad gfm-card" id="donate" aria-labelledby="gfm-title">
+      <div class="gfm-head">
+        <span class="gfm-wordmark">Our GoFundMe</span>
+        <span class="who">Brady Murray for Centre County PAWS</span>
+      </div>
+      <h2 id="gfm-title">Feeding Homeless PAWS -MGMT-453- Team B8-Fall semester 2026</h2>
+      <p class="tagline">This fund supplies Centre County PAWS’ homeless cats and dogs with food and daily care</p>
+
+      <div class="progress" aria-label="Fundraising progress">
+        <div class="bar"><i id="bar" style="width:76%"></i></div>
+        <div class="stats">
+          <div><b id="raised">$755</b><span>raised</span></div>
+          <div><b id="goal">$1K</b><span>goal</span></div>
+          <div><b id="donors">8</b><span>donations</span></div>
+          <div><b id="pct">76%</b><span>complete</span></div>
+        </div>
+        <p class="snapshot">Numbers as shown on GoFundMe on November 7, 2026. The live total is on the GoFundMe page.</p>
+      </div>
+
+      <div class="cta-row">
+        <a class="btn gfm" id="donate-link" href="https://www.gofundme.com/f/feeding-homeless-paws-mgmt453-team-b8fall-semester-2026/donate" target="_blank" rel="noopener">
+          Donate on GoFundMe
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+        <button class="btn ghost" id="copy-link" type="button">Copy the link</button>
+        <span class="toast" id="link-toast" role="status" aria-live="polite"></span>
+      </div>
+
+      <div class="qr-block">
+        <div class="qr" id="qr-main" aria-label="QR code that opens our GoFundMe page" role="img"></div>
+        <div>
+          <p class="display">Scan to donate</p>
+          <p class="how">Point your phone camera at the code and tap the link that pops up. It opens our GoFundMe page, where you can give any amount in about a minute.</p>
+          <p class="url">https://www.gofundme.com/f/feeding-homeless-paws-mgmt453-team-b8fall-semester-2026</p>
+        </div>
+      </div>
+
+      <div class="impact" aria-label="What your donation does">
+        <div><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 28h32l-3 10H11z"/><path d="M12 28c0-6 5-9 12-9s12 3 12 9"/><circle cx="19" cy="23" r="1.2" fill="currentColor"/><circle cx="25" cy="21" r="1.2" fill="currentColor"/><circle cx="30" cy="24" r="1.2" fill="currentColor"/></svg><span>Food for homeless pets</span></div>
+        <div><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 24 24 10l16 14"/><path d="M12 21v17h24V21"/><g fill="currentColor" stroke="none"><ellipse cx="24" cy="31" rx="4" ry="3.2"/><circle cx="19" cy="26.5" r="1.7"/><circle cx="22.5" cy="24" r="1.7"/><circle cx="25.5" cy="24" r="1.7"/><circle cx="29" cy="26.5" r="1.7"/></g></svg><span>Care and shelter</span></div>
+        <div><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 40S7 29 7 18a8 8 0 0 1 15-4 8 8 0 0 1 15 4c0 11-13 22-13 22z"/><g fill="currentColor" stroke="none"><ellipse cx="24" cy="27" rx="3.6" ry="3"/><circle cx="19.5" cy="22.5" r="1.5"/><circle cx="22.6" cy="20" r="1.5"/><circle cx="25.4" cy="20" r="1.5"/><circle cx="28.5" cy="22.5" r="1.5"/></g></svg><span>A chance at a loving home</span></div>
+      </div>
+      <div class="hundred"><b>100%</b><span>of donations go to Centre County PAWS</span></div>
+
+      <div class="facts">
+        <span><b>Organizer</b> Brady Murray, State College, PA</span>
+        <span><b>Beneficiary</b> Centre County PAWS</span>
+        <span><b>Category</b> Animals</span>
+        <span><b>Tax deductible</b></span>
+      </div>
+    </article>
+
+    <!-- Shirt stand -->
+    <aside class="card pad shop" id="shop" aria-labelledby="shop-title">
+      <p class="eyebrow">Shirt sale</p>
+      <h2 id="shop-title">Wear it for the shelter</h2>
+      <p class="price"><b>$25</b> a shirt. The money for every shirt goes into the GoFundMe as a donation marked <b>T-shirt sale</b>, so it reaches PAWS the same way.</p>
+
+      <div class="field">
+        <span class="lbl" id="design-lbl">Design</span>
+        <div class="designs" role="group" aria-labelledby="design-lbl">
+          <button class="design" type="button" data-design="a" aria-pressed="true"><img src="img/shirt-a-back.jpg" alt="Shelter Pets design: dog and cat with Support Shelter Pets" loading="lazy"><span>Shelter Pets</span></button>
+          <button class="design" type="button" data-design="b" aria-pressed="false"><img src="img/shirt-b-back.jpg" alt="Varsity design: block letters, dog and cat, Helping pets in need" loading="lazy"><span>Varsity</span></button>
+          <button class="design" type="button" data-design="c" aria-pressed="false"><img src="img/shirt-c-back.jpg" alt="Badge design: round stamp with paw, For Pets in Need" loading="lazy"><span>Badge</span></button>
+          <button class="design" type="button" data-design="d" aria-pressed="false"><img src="img/shirt-d-back.jpg" alt="Scan to Donate design: dog and cat with QR code" loading="lazy"><span>Scan to Donate</span></button>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl" id="size-lbl">Size</span>
+        <div class="sizes" role="group" aria-labelledby="size-lbl">
+          <button class="size" type="button" data-size="S" aria-pressed="false">S</button>
+          <button class="size" type="button" data-size="M" aria-pressed="true">M</button>
+          <button class="size" type="button" data-size="L" aria-pressed="false">L</button>
+          <button class="size" type="button" data-size="XL" aria-pressed="false">XL</button>
+          <button class="size" type="button" data-size="2XL" aria-pressed="false">2XL</button>
+        </div>
+      </div>
+
+      <div class="field row2">
+        <div>
+          <span class="lbl" id="qty-lbl">Quantity</span>
+          <div class="qty" role="group" aria-labelledby="qty-lbl">
+            <button type="button" id="qty-minus" aria-label="One fewer shirt">−</button>
+            <output id="qty-out" for="qty-minus qty-plus">1</output>
+            <button type="button" id="qty-plus" aria-label="One more shirt">+</button>
+          </div>
+        </div>
+        <div>
+          <label for="buyer">Your name (for pickup)</label>
+          <input class="input" id="buyer" type="text" autocomplete="name" placeholder="First name" maxlength="40">
+        </div>
+      </div>
+
+      <div class="total"><span>Total to donate</span><b id="total">$25</b></div>
+
+      <div class="note">
+        <label for="order-note" class="lbl">Your order note</label>
+        <textarea id="order-note" readonly rows="3" aria-describedby="note-help">T-SHIRT SALE: 1 x Shelter Pets tee, size M</textarea>
+      </div>
+      <div class="cta-row">
+        <button class="btn primary" id="copy-note" type="button">Copy order note</button>
+        <a class="btn gfm" id="shop-donate" href="https://www.gofundme.com/f/feeding-homeless-paws-mgmt453-team-b8fall-semester-2026/donate" target="_blank" rel="noopener">Donate $25 on GoFundMe</a>
+      </div>
+      <p class="toast" id="note-toast" role="status" aria-live="polite"></p>
+
+      <ol class="steps" id="note-help">
+        <li>Pick your design, size and how many you want.</li>
+        <li>Copy the order note above.</li>
+        <li>Tap Donate, give the shirt total on GoFundMe and paste the note into the comment box with your donation.</li>
+        <li>We match your donation to your note and get your shirt to you.</li>
+      </ol>
+      <p class="fine">Comments on GoFundMe are public, so the note only carries your first name. Keep the donor name on your donation visible to us so we can match it.</p>
+    </aside>
+  </div>
+  </div>
+
+  <section class="band" id="story" aria-labelledby="story-title">
+    <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Our story</p>
+        <h2 id="story-title">Word for word from our GoFundMe</h2>
+      </div>
+      <p>This is the story our team wrote on the GoFundMe page, exactly as it appears there.</p>
+    </div>
+    <div class="story-grid">
+      <div class="card pad">
+        <div class="story">
+          <p>Help fill empty bellies at Centre County PAWS❤️.</p>
+          <p>Every dog and cat deserves a full belly, a safe place to sleep, and a chance at a loving home and a loving family. Unfortunately many homeless dogs depend on shelters like Centre County PAWS for their daily meals, care, and needs.</p>
+          <p>Our team is raising money to help provide food for these animals in needs. Every donation no matter how big or small, will help fill an empty belly and make a difference in an animals life.</p>
+          <p>These animals can’t ask for themselves, so we are asking on their behalf. Please consider donating or sharing our fundraiser to help us reach our challenging goal. Together we can show these animals that they are not forgotten and there is enough love to go around!</p>
+          <p>Help us turn their empty bowls into full bellies. Every little bit counts!! ❤️</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn gfm" href="https://www.gofundme.com/f/feeding-homeless-paws-mgmt453-team-b8fall-semester-2026" target="_blank" rel="noopener">Open the GoFundMe page</a>
+        </div>
+      </div>
+      <div class="card pad">
+        <p class="eyebrow" style="margin-bottom:14px">Campaign details</p>
+        <div class="factlist">
+          <div><span>Fundraiser</span><b>Feeding Homeless PAWS -MGMT-453- Team B8-Fall semester 2026</b></div>
+          <div><span>Organizer</span><b><span class="avatar" aria-hidden="true">B</span>Brady Murray<small>State College, PA</small></b></div>
+          <div><span>Beneficiary</span><b><span class="avatar" aria-hidden="true">C</span>Centre County PAWS</b></div>
+          <div><span>Category</span><b>Animals</b></div>
+          <div><span>Tax</span><b>Tax deductible</b></div>
+          <div><span>Created</span><b>October 2026</b></div>
+          <div><span>Goal</span><b>$1,000</b></div>
+          <div><span>Donations</span><b>8 donations · $755 raised<small>As shown on GoFundMe, November 7, 2026</small></b></div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="band" id="shirts" aria-labelledby="shirts-title">
+    <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">The shirts</p>
+        <h2 id="shirts-title">Four designs, one cause</h2>
+      </div>
+      <p>White tee, navy print, $25 each. Flip any card to see the front and the back.</p>
+    </div>
+    <div class="shirt-grid">
+      <article class="card shirt" data-shirt="a">
+        <div class="view">
+          <img src="img/shirt-a-back.jpg" alt="Back of the Shelter Pets shirt: Paws For A Cause lettering over a happy dog and a cat, with the words Support Shelter Pets" data-side="back">
+          <img src="img/shirt-a-front.jpg" alt="Front of the Shelter Pets shirt: Paws For A Cause lettering across the chest with a paw print and a heart" data-side="front" hidden>
+          <div class="flip" role="group" aria-label="Side"><button type="button" data-flip="back" aria-pressed="true">Back</button><button type="button" data-flip="front" aria-pressed="false">Front</button></div>
+        </div>
+        <div class="body">
+          <h3>Shelter Pets</h3>
+          <p class="desc">Big brush lettering on the chest. On the back, a dog and cat leaning on each other over the words Support Shelter Pets.</p>
+          <div class="foot"><b>$25</b><button class="btn primary" type="button" data-pick="a">Order this one</button></div>
+        </div>
+      </article>
+      <article class="card shirt" data-shirt="b">
+        <div class="view">
+          <img src="img/shirt-b-back.jpg" alt="Back of the Varsity shirt: block letters reading Paws For A Cause with a sketched paw, a dog and a cat and the words Helping pets in need" data-side="back">
+          <img src="img/shirt-b-front.jpg" alt="Front of the Varsity shirt: a small block letter Paws For A Cause logo on the left chest" data-side="front" hidden>
+          <div class="flip" role="group" aria-label="Side"><button type="button" data-flip="back" aria-pressed="true">Back</button><button type="button" data-flip="front" aria-pressed="false">Front</button></div>
+        </div>
+        <div class="body">
+          <h3>Varsity</h3>
+          <p class="desc">Small pocket logo on the front, block letters across the back with a sketched paw and the words Helping pets in need.</p>
+          <div class="foot"><b>$25</b><button class="btn primary" type="button" data-pick="b">Order this one</button></div>
+        </div>
+      </article>
+      <article class="card shirt" data-shirt="c">
+        <div class="view">
+          <img src="img/shirt-c-back.jpg" alt="Back of the Badge shirt: a round stamp with a large paw print, a dog and a cat peeking in and a banner reading For Pets In Need" data-side="back">
+          <img src="img/shirt-c-front.jpg" alt="Front of the Badge shirt: large Paws For A Cause brush lettering with a paw print and a heart" data-side="front" hidden>
+          <div class="flip" role="group" aria-label="Side"><button type="button" data-flip="back" aria-pressed="true">Back</button><button type="button" data-flip="front" aria-pressed="false">Front</button></div>
+        </div>
+        <div class="body">
+          <h3>Badge</h3>
+          <p class="desc">Bold lettering on the front. A round stamp on the back with a big paw, two little faces and a banner reading For Pets In Need.</p>
+          <div class="foot"><b>$25</b><button class="btn primary" type="button" data-pick="c">Order this one</button></div>
+        </div>
+      </article>
+      <article class="card shirt" data-shirt="d">
+        <div class="view">
+          <img src="img/shirt-d-back.jpg" alt="Back of the Scan to Donate shirt: Paws For A Cause lettering, a dog and a cat, and a Scan to Donate QR code" data-side="back">
+          <img src="img/shirt-d-front.jpg" alt="Front of the Scan to Donate shirt: small Paws For A Cause script with a paw on the left chest" data-side="front" hidden>
+          <div class="flip" role="group" aria-label="Side"><button type="button" data-flip="back" aria-pressed="true">Back</button><button type="button" data-flip="front" aria-pressed="false">Front</button></div>
+        </div>
+        <div class="body">
+          <h3>Scan to Donate</h3>
+          <p class="desc">Pocket script on the front. The back carries the dog and cat with a QR code, so the shirt itself asks people to give.</p>
+          <div class="foot"><b>$25</b><button class="btn primary" type="button" data-pick="d">Order this one</button></div>
+        </div>
+      </article>
+    </div>
+    </div>
+  </section>
+
+  <section class="band" id="poster" aria-labelledby="poster-title">
+    <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">The poster</p>
+        <h2 id="poster-title">Share it anywhere</h2>
+      </div>
+    </div>
+    <div class="poster-grid">
+      <img src="img/poster.jpg" alt="Paws for a Cause poster: Help Fill Empty Bellies, a golden retriever and a tabby cat wearing Penn State bandanas, a Scan to Donate QR code and the line Small donations. Big impact. Support Centre County PAWS">
+      <div class="poster-copy">
+        <p class="big">Small donations. Big impact.</p>
+        <p>Our team made this poster for campus boards, group chats and stories. Screenshot it, post it, or print it and pin it up.</p>
+        <ul>
+          <li>Food for homeless pets</li>
+          <li>Care and shelter</li>
+          <li>A chance at a loving home</li>
+        </ul>
+        <div class="qr-mini">
+          <div class="qr" id="qr-poster" role="img" aria-label="QR code that opens our GoFundMe page"></div>
+          <p>Scan to donate. Same code as the poster, straight to our GoFundMe.</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="band" id="paws" aria-labelledby="paws-title">
+    <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Where the money goes</p>
+        <h2 id="paws-title">Centre County PAWS</h2>
+      </div>
+    </div>
+    <div class="paws-grid">
+      <div class="card pad">
+        <p class="quote">“Promote Animal Welfare and Safety with compassion through adoption, sheltering, education, and community assistance.”</p>
+        <p class="cite">The mission of Centre County PAWS, in their words.</p>
+      </div>
+      <div class="card pad paws-facts">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>1401 Trout Road, State College, PA 16801. Visits by appointment.</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg><span>A no kill shelter founded by Centre County residents in 1980, in its own building on Trout Road since 2007.</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></svg><span>Houses dozens of cats and dogs at a time and finds homes for about 550 animals a year.</span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span><a href="https://www.centrecountypaws.org" target="_blank" rel="noopener">centrecountypaws.org</a> for adoptions, fostering and volunteering.</span></div>
+      </div>
+    </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="display">Paws for a Cause</p>
+    <p>A student fundraiser by Team B8 in MGMT 453 at Penn State, Fall 2026. Donations are collected on GoFundMe and go to Centre County PAWS. This site is run by the student team, not by GoFundMe or Centre County PAWS.</p>
+    <p>Buying a shirt? Donate the shirt total on GoFundMe and paste your order note in the comment. Questions about an order: leave them in the same comment and we will reply there.</p>
+    <p><a href="https://www.gofundme.com/f/feeding-homeless-paws-mgmt453-team-b8fall-semester-2026" target="_blank" rel="noopener">Our GoFundMe page</a> · <a href="https://www.centrecountypaws.org" target="_blank" rel="noopener">Centre County PAWS</a></p>
+  </div>
+</footer>
+</div>
+
+<script>
+(function(){
+  const CAMPAIGN='https://www.gofundme.com/f/feeding-homeless-paws-mgmt453-team-b8fall-semester-2026';
+  const QR_SVG="<svg viewBox=\"0 0 530 530\" xmlns=\"http://www.w3.org/2000/svg\" class=\"segno\"><path transform=\"scale(10)\" class=\"qrline\" stroke=\"#1b3a78\" d=\"M2 2.5h7m3 0h4m1 0h7m1 0h1m8 0h2m1 0h3m2 0h1m1 0h7m-49 1h1m5 0h1m2 0h2m2 0h1m1 0h2m2 0h3m2 0h5m5 0h1m1 0h5m1 0h1m5 0h1m-49 1h1m1 0h3m1 0h1m10 0h1m3 0h1m2 0h1m3 0h2m3 0h1m1 0h3m1 0h2m1 0h1m1 0h3m1 0h1m-49 1h1m1 0h3m1 0h1m4 0h1m1 0h1m1 0h1m1 0h4m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m2 0h2m2 0h1m2 0h1m1 0h3m1 0h1m-49 1h1m1 0h3m1 0h1m1 0h2m1 0h1m1 0h1m2 0h2m1 0h2m1 0h6m1 0h2m1 0h2m2 0h2m4 0h1m1 0h3m1 0h1m-49 1h1m5 0h1m3 0h1m7 0h2m2 0h1m3 0h1m1 0h5m2 0h1m1 0h2m3 0h1m5 0h1m-49 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-41 1h3m3 0h1m1 0h1m1 0h2m1 0h2m3 0h1m1 0h1m1 0h2m1 0h2m1 0h1m1 0h2m-38 1h2m2 0h5m2 0h2m2 0h2m1 0h8m2 0h1m2 0h2m3 0h1m2 0h2m1 0h1m-45 1h3m5 0h4m2 0h1m2 0h3m1 0h1m1 0h1m2 0h1m2 0h3m4 0h1m2 0h1m1 0h2m2 0h1m1 0h1m-47 1h2m2 0h2m1 0h4m1 0h2m5 0h1m2 0h1m1 0h1m3 0h1m1 0h1m1 0h3m3 0h1m1 0h2m1 0h3m-46 1h4m2 0h1m1 0h1m9 0h1m4 0h2m1 0h2m3 0h1m1 0h1m1 0h1m1 0h4m1 0h2m1 0h3m-49 1h2m1 0h5m1 0h2m1 0h1m4 0h1m2 0h1m1 0h2m2 0h3m3 0h1m2 0h3m1 0h5m1 0h2m1 0h1m-49 1h1m3 0h2m2 0h3m1 0h1m1 0h3m2 0h1m4 0h3m1 0h1m2 0h3m1 0h4m5 0h2m1 0h2m-48 1h1m4 0h1m1 0h1m2 0h3m1 0h5m1 0h1m3 0h3m4 0h1m2 0h1m1 0h2m3 0h1m2 0h3m-47 1h2m1 0h1m2 0h1m3 0h2m2 0h1m1 0h2m1 0h1m3 0h3m2 0h5m5 0h2m1 0h1m1 0h1m-45 1h1m2 0h2m1 0h2m1 0h1m2 0h3m2 0h1m1 0h1m1 0h1m3 0h3m3 0h1m2 0h1m4 0h2m1 0h3m1 0h1m-46 1h2m5 0h1m1 0h1m1 0h1m1 0h1m1 0h5m1 0h2m4 0h2m2 0h1m1 0h4m1 0h3m1 0h2m3 0h1m-48 1h1m1 0h2m1 0h2m1 0h3m1 0h3m3 0h1m8 0h5m1 0h3m1 0h1m2 0h1m1 0h3m1 0h2m-49 1h3m2 0h1m3 0h1m1 0h1m5 0h1m1 0h3m2 0h2m2 0h3m2 0h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m-49 1h1m1 0h1m1 0h3m5 0h1m1 0h3m1 0h1m1 0h1m2 0h2m1 0h1m5 0h2m1 0h1m2 0h1m6 0h1m1 0h2m-49 1h1m2 0h1m3 0h4m1 0h2m1 0h2m1 0h2m1 0h1m1 0h3m4 0h1m1 0h2m1 0h1m3 0h1m1 0h2m-43 1h1m1 0h1m1 0h5m4 0h2m4 0h1m2 0h6m1 0h1m1 0h2m1 0h1m1 0h1m2 0h6m1 0h1m-46 1h2m1 0h1m3 0h1m1 0h1m4 0h3m2 0h3m3 0h2m3 0h1m1 0h1m2 0h1m1 0h1m1 0h1m3 0h3m1 0h1m-49 1h5m1 0h1m1 0h1m3 0h1m4 0h1m1 0h2m1 0h1m1 0h1m1 0h2m3 0h2m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m-45 1h1m3 0h2m2 0h1m2 0h8m3 0h3m1 0h1m2 0h1m2 0h5m3 0h2m1 0h2m-48 1h8m1 0h3m1 0h3m2 0h1m1 0h6m5 0h1m2 0h13m-48 1h3m5 0h3m2 0h2m3 0h2m1 0h1m2 0h1m1 0h4m1 0h2m2 0h1m1 0h2m1 0h2m1 0h1m3 0h1m-48 1h1m2 0h1m1 0h2m1 0h1m2 0h1m4 0h1m6 0h1m1 0h2m1 0h6m3 0h2m1 0h1m2 0h1m2 0h2m-47 1h2m5 0h1m1 0h1m3 0h1m1 0h6m1 0h3m2 0h3m2 0h4m2 0h1m6 0h3m-46 1h1m2 0h1m1 0h2m4 0h3m2 0h1m1 0h1m7 0h8m1 0h2m1 0h3m2 0h1m1 0h1m-47 1h1m1 0h2m1 0h3m3 0h4m2 0h2m3 0h1m1 0h2m2 0h1m1 0h2m2 0h2m1 0h6m-45 1h1m2 0h4m1 0h1m2 0h3m3 0h1m1 0h1m1 0h3m2 0h3m1 0h2m2 0h1m5 0h1m1 0h3m2 0h1m-47 1h1m1 0h1m4 0h3m3 0h1m2 0h2m1 0h1m4 0h1m2 0h1m1 0h1m2 0h1m3 0h1m2 0h4m2 0h2m-47 1h1m2 0h4m1 0h1m1 0h2m4 0h7m1 0h2m2 0h2m1 0h4m3 0h1m4 0h2m-45 1h4m2 0h1m1 0h1m1 0h2m4 0h1m1 0h2m1 0h4m1 0h1m2 0h4m2 0h2m1 0h1m2 0h1m2 0h3m-48 1h1m1 0h2m1 0h3m2 0h2m1 0h3m1 0h2m1 0h1m3 0h3m2 0h1m3 0h1m1 0h2m1 0h3m1 0h3m1 0h3m-49 1h4m3 0h10m1 0h2m3 0h3m1 0h1m1 0h2m1 0h2m1 0h1m2 0h1m1 0h1m2 0h6m-48 1h1m3 0h4m2 0h6m1 0h1m1 0h1m3 0h1m4 0h1m2 0h1m3 0h1m1 0h2m1 0h1m3 0h3m-47 1h3m4 0h1m1 0h1m1 0h1m3 0h3m5 0h6m1 0h2m4 0h2m2 0h1m1 0h2m2 0h1m-48 1h3m3 0h1m1 0h2m1 0h4m1 0h3m1 0h9m1 0h1m1 0h1m1 0h1m2 0h2m1 0h5m1 0h1m1 0h1m-41 1h1m1 0h1m1 0h1m2 0h1m1 0h3m2 0h1m3 0h1m2 0h1m1 0h1m2 0h2m1 0h1m1 0h2m3 0h3m1 0h1m-49 1h7m1 0h5m1 0h1m1 0h2m2 0h1m1 0h1m1 0h1m1 0h2m1 0h3m1 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h2m1 0h2m-49 1h1m5 0h1m3 0h6m3 0h4m3 0h1m3 0h1m2 0h5m2 0h1m3 0h2m2 0h1m-49 1h1m1 0h3m1 0h1m3 0h1m2 0h3m2 0h1m1 0h7m3 0h1m4 0h1m2 0h1m1 0h6m1 0h1m-48 1h1m1 0h3m1 0h1m1 0h1m2 0h1m1 0h4m2 0h1m1 0h1m1 0h1m2 0h1m9 0h2m1 0h2m1 0h1m1 0h1m2 0h2m-49 1h1m1 0h3m1 0h1m1 0h2m1 0h3m1 0h1m1 0h3m2 0h1m1 0h1m1 0h1m2 0h1m1 0h1m2 0h4m1 0h1m3 0h3m-46 1h1m5 0h1m7 0h3m5 0h3m6 0h4m1 0h2m2 0h2m3 0h2m-47 1h7m4 0h1m1 0h1m6 0h1m3 0h1m1 0h3m1 0h1m2 0h6m4 0h1m1 0h4\"/><g id=\"badge\"><rect x=\"206.7\" y=\"206.7\" width=\"116.6\" height=\"116.6\" rx=\"21.0\" fill=\"#ffffff\"/>\n<g fill=\"#1b3a78\" transform=\"translate(265.0,272.0) scale(1.1660)\">\n<ellipse cx=\"0\" cy=\"10\" rx=\"19\" ry=\"16\"/>\n<ellipse cx=\"-24\" cy=\"-8\" rx=\"8\" ry=\"11\" transform=\"rotate(-20 -24 -8)\"/>\n<ellipse cx=\"-9\" cy=\"-22\" rx=\"8\" ry=\"11\" transform=\"rotate(-6 -9 -22)\"/>\n<ellipse cx=\"9\" cy=\"-22\" rx=\"8\" ry=\"11\" transform=\"rotate(6 9 -22)\"/>\n<ellipse cx=\"24\" cy=\"-8\" rx=\"8\" ry=\"11\" transform=\"rotate(20 24 -8)\"/>\n</g></g></svg>";
+  for(const id of ['qr-main','qr-poster']){ const el=document.getElementById(id); if(el) el.innerHTML=QR_SVG; }
+
+  /* ---------- copy helpers ---------- */
+  function copyText(text, toastEl, okMsg){
+    const done=()=>{ toastEl.textContent=okMsg; setTimeout(()=>{ toastEl.textContent=''; }, 2600); };
+    const fallback=()=>{
+      const ta=document.createElement('textarea'); ta.value=text; ta.setAttribute('readonly',''); ta.style.position='fixed'; ta.style.opacity='0';
+      document.body.appendChild(ta); ta.select();
+      let ok=false; try{ ok=document.execCommand('copy'); }catch(e){}
+      document.body.removeChild(ta);
+      if(ok) done(); else { toastEl.textContent='Select the text and copy it yourself.'; }
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done, fallback);
+    } else fallback();
+  }
+  document.getElementById('copy-link').addEventListener('click', ()=>copyText(CAMPAIGN, document.getElementById('link-toast'), 'Link copied'));
+
+  /* ---------- shirt stand ---------- */
+  const PRICE=25;
+  const DESIGNS={a:'Shelter Pets', b:'Varsity', c:'Badge', d:'Scan to Donate'};
+  const state={design:'a', size:'M', qty:1, name:''};
+  const qtyOut=document.getElementById('qty-out'), totalEl=document.getElementById('total'), noteEl=document.getElementById('order-note'), shopDonate=document.getElementById('shop-donate');
+  function fmt(n){ return '$'+n.toLocaleString('en-US'); }
+  function render(){
+    qtyOut.value=state.qty; qtyOut.textContent=state.qty;
+    const total=PRICE*state.qty; totalEl.textContent=fmt(total);
+    shopDonate.textContent='Donate '+fmt(total)+' on GoFundMe';
+    const name=state.name.trim().replace(/\s+/g,' ');
+    noteEl.value='T-SHIRT SALE: '+state.qty+' x '+DESIGNS[state.design]+' tee'+(state.qty>1?'s':'')+', size '+state.size+(name?', for '+name:'');
+    document.querySelectorAll('.design').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.design===state.design)));
+    document.querySelectorAll('.size').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.size===state.size)));
+  }
+  document.querySelectorAll('.design').forEach(b=>b.addEventListener('click', ()=>{ state.design=b.dataset.design; render(); }));
+  document.querySelectorAll('.size').forEach(b=>b.addEventListener('click', ()=>{ state.size=b.dataset.size; render(); }));
+  document.getElementById('qty-minus').addEventListener('click', ()=>{ state.qty=Math.max(1,state.qty-1); render(); });
+  document.getElementById('qty-plus').addEventListener('click', ()=>{ state.qty=Math.min(20,state.qty+1); render(); });
+  document.getElementById('buyer').addEventListener('input', e=>{ state.name=e.target.value; render(); });
+  document.getElementById('copy-note').addEventListener('click', ()=>copyText(noteEl.value, document.getElementById('note-toast'), 'Order note copied. Paste it into the comment when you donate.'));
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('[data-pick]').forEach(b=>b.addEventListener('click', ()=>{
+    state.design=b.dataset.pick; render();
+    document.getElementById('shop').scrollIntoView({behavior: reduce.matches?'auto':'smooth', block:'start'});
+    const t=document.getElementById('note-toast'); t.textContent=DESIGNS[state.design]+' selected. Pick a size and quantity.'; setTimeout(()=>{ if(t.textContent.indexOf('selected')>-1) t.textContent=''; }, 3500);
+  }));
+  document.querySelectorAll('.shirt').forEach(card=>{
+    card.querySelectorAll('[data-flip]').forEach(btn=>btn.addEventListener('click', ()=>{
+      const side=btn.dataset.flip;
+      card.querySelectorAll('img[data-side]').forEach(img=>{ img.hidden = img.dataset.side!==side; });
+      card.querySelectorAll('[data-flip]').forEach(b=>b.setAttribute('aria-pressed', String(b===btn)));
+    }));
+  });
+  render();
+
+  /* ---------- shared drawing helpers (original paper cutout style) ---------- */
+  let colors={};
+  function readColors(){
+    const cs=getComputedStyle(document.documentElement); const g=n=>cs.getPropertyValue(n).trim();
+    colors={ink:g('--scene-ink'), soft:g('--scene-soft'), ground:g('--scene-ground'), heart:g('--scene-heart'), sun:g('--scene-sun'), eye:g('--scene-eye'),
+      a:parseFloat(g('--stage-alpha'))||.95, sa:parseFloat(g('--stage-soft-alpha'))||1, amb:parseFloat(g('--ambient-alpha'))||.16, ambPaw:parseFloat(g('--ambient-paw-alpha'))||.06};
+  }
+  function rr(c,x,y,w,h,r){ r=Math.min(r,w/2,h/2); c.moveTo(x+r,y); c.arcTo(x+w,y,x+w,y+h,r); c.arcTo(x+w,y+h,x,y+h,r); c.arcTo(x,y+h,x,y,r); c.arcTo(x,y,x+w,y,r); c.closePath(); }
+  function el(c,x,y,rx,ry,rot){ rot=rot||0; c.moveTo(x+rx*Math.cos(rot), y+rx*Math.sin(rot)); c.ellipse(x,y,rx,ry,rot,0,Math.PI*2); }
+  function heartPath(c,x,y,r){ c.moveTo(x,y+r); c.bezierCurveTo(x-r*1.4,y-r*.1,x-r*.9,y-r*1.3,x,y-r*.45); c.bezierCurveTo(x+r*.9,y-r*1.3,x+r*1.4,y-r*.1,x,y+r); c.closePath(); }
+  function pawPathTo(c,x,y,u){ el(c,x,y+u*.55,u*.75,u*.62); el(c,x-u*.9,y-u*.2,u*.3,u*.44,-.35); el(c,x-u*.32,y-u*.68,u*.3,u*.44,-.1); el(c,x+u*.32,y-u*.68,u*.3,u*.44,.1); el(c,x+u*.9,y-u*.2,u*.3,u*.44,.35); }
+  function cloudPath(c,x,y,u){ el(c,x,y,u*1.3,u*.6); el(c,x-u*.6,y-u*.25,u*.6,u*.55); el(c,x+u*.3,y-u*.4,u*.75,u*.7); el(c,x+u*.9,y-u*.1,u*.5,u*.45); }
+
+  // silhouettes go on the ink layer; small accents (eye, collar) are drawn on top afterwards
+  function drawDog(c,x,y,u,walk,eat,wag){
+    c.lineCap='round'; c.lineWidth=9*u; c.strokeStyle=colors.ink;
+    const legs=[[-24,0],[-12,Math.PI],[14,Math.PI*.9],[26,Math.PI*1.9]];
+    for(const [lx,ph] of legs){ const sw=Math.sin(walk+ph)*10*u; c.beginPath(); c.moveTo(x+lx*u,y-26*u); c.lineTo(x+lx*u+sw,y-4*u); c.stroke(); }
+    c.lineWidth=7*u; c.beginPath(); c.moveTo(x-34*u,y-44*u); const ta=-0.9+Math.sin(wag)*0.45; c.quadraticCurveTo(x-48*u,y-48*u-10*u*Math.cos(ta), x-50*u+Math.cos(ta)*18*u, y-52*u+Math.sin(ta)*24*u); c.stroke();
+    c.fillStyle=colors.ink; c.beginPath();
+    rr(c,x-38*u,y-56*u,76*u,34*u,17*u);
+    const hy=y+(eat?8:0)*u, hx=x+(eat?6:0)*u;
+    el(c,x+30*u,hy-48*u,15*u,15*u);
+    el(c,hx+46*u,hy-62*u,16*u,16*u);
+    rr(c,hx+54*u,hy-60*u,26*u,13*u,6.5*u);
+    el(c,hx+38*u,hy-58*u,7*u,14*u,-.35);
+    el(c,hx+79*u,hy-56*u,3.5*u,3.5*u);
+    c.fill();
+  }
+  function dogAccents(c,x,y,u,eat){
+    const hy=y+(eat?8:0)*u, hx=x+(eat?6:0)*u;
+    c.fillStyle=colors.eye; c.beginPath(); el(c,hx+50*u,hy-66*u,2.4*u,2.4*u); c.fill();
+    c.strokeStyle=colors.soft; c.lineWidth=4*u; c.lineCap='round'; c.beginPath(); c.arc(x+32*u,hy-44*u,12*u,Math.PI*.15,Math.PI*.85); c.stroke();
+  }
+  function drawCat(c,x,y,u,walk,eat,wag){
+    c.lineCap='round'; c.lineWidth=7*u; c.strokeStyle=colors.ink;
+    const legs=[[-20,0],[-10,Math.PI],[12,Math.PI*.9],[22,Math.PI*1.9]];
+    for(const [lx,ph] of legs){ const sw=Math.sin(walk+ph)*8*u; c.beginPath(); c.moveTo(x+lx*u,y-22*u); c.lineTo(x+lx*u+sw,y-3*u); c.stroke(); }
+    c.lineWidth=6*u; c.beginPath(); c.moveTo(x-28*u,y-34*u); const k=Math.sin(wag)*10*u; c.bezierCurveTo(x-52*u,y-30*u,x-56*u+k,y-66*u,x-40*u+k*.6,y-70*u); c.stroke();
+    c.fillStyle=colors.ink; c.beginPath();
+    rr(c,x-32*u,y-46*u,64*u,28*u,14*u);
+    const hy=y+(eat?8:0)*u, hx=x+(eat?4:0)*u;
+    el(c,x+22*u,hy-40*u,12*u,12*u);
+    el(c,hx+34*u,hy-50*u,14*u,13*u);
+    c.moveTo(hx+22*u,hy-58*u); c.lineTo(hx+24*u,hy-72*u); c.lineTo(hx+33*u,hy-61*u); c.closePath();
+    c.moveTo(hx+36*u,hy-62*u); c.lineTo(hx+44*u,hy-73*u); c.lineTo(hx+46*u,hy-58*u); c.closePath();
+    c.fill();
+    c.lineWidth=1.6*u; c.beginPath(); c.moveTo(hx+46*u,hy-47*u); c.lineTo(hx+58*u,hy-50*u); c.moveTo(hx+46*u,hy-45*u); c.lineTo(hx+58*u,hy-44*u); c.stroke();
+  }
+  function catAccents(c,x,y,u,eat){
+    const hy=y+(eat?8:0)*u, hx=x+(eat?4:0)*u;
+    c.fillStyle=colors.eye; c.beginPath(); el(c,hx+40*u,hy-52*u,2.2*u,2.6*u); c.fill();
+    c.strokeStyle=colors.soft; c.lineWidth=3.5*u; c.lineCap='round'; c.beginPath(); c.arc(x+24*u,hy-38*u,10*u,Math.PI*.15,Math.PI*.85); c.stroke();
+  }
+
+  /* ---------- the rescue stage (hero band) ---------- */
+  function makeStage(canvas){
+    const ctx=canvas.getContext('2d'); if(!ctx) return null;
+    const layer=document.createElement('canvas'), lctx=layer.getContext('2d');
+    const softc=document.createElement('canvas'), sctx=softc.getContext('2d');
+    const S={W:0,H:0,dpr:1,s:1,groundY:0,bowlX:0,houseX:0,actors:[],hearts:[],crumbs:[],nextKind:'cat',spawnTimer:5,bowlFill:1,lastT:0,running:false,visible:true};
+    function resize(){
+      const r=canvas.getBoundingClientRect(); S.W=Math.max(1,Math.round(r.width)); S.H=Math.max(1,Math.round(r.height)); S.dpr=Math.min(2,window.devicePixelRatio||1);
+      for(const c of [canvas,layer,softc]){ c.width=Math.round(S.W*S.dpr); c.height=Math.round(S.H*S.dpr); }
+      S.s=Math.max(.5,Math.min(1.1,S.W/1200,S.H/300)); S.groundY=S.H*.86; S.houseX=S.W-150*S.s; S.bowlX=S.houseX-160*S.s;
+    }
+    function drawGround(){
+      const u=S.s, y=S.groundY+2*u;
+      sctx.strokeStyle=colors.ground; sctx.lineCap='round'; sctx.lineWidth=3*u; sctx.beginPath(); sctx.moveTo(8*u,y); sctx.lineTo(S.W-8*u,y); sctx.stroke();
+      sctx.strokeStyle=colors.soft; sctx.lineWidth=2.4*u;
+      for(let x=30*u; x<S.W; x+=97*u){ sctx.beginPath(); sctx.moveTo(x,y); sctx.lineTo(x-3*u,y-9*u); sctx.moveTo(x+6*u,y); sctx.lineTo(x+9*u,y-7*u); sctx.stroke(); }
+    }
+    function drawSky(t){
+      const u=S.s, cx=Math.max(70*u, S.W*.09), cy=S.H*.3;
+      sctx.fillStyle=colors.soft; sctx.beginPath(); cloudPath(sctx,cx,cy,34*u); sctx.fill();
+      sctx.strokeStyle=colors.soft; sctx.lineWidth=3*u; sctx.lineCap='round';
+      for(let i=0;i<5;i++){ const ph=(t*.7+i*.23)%1; const dx=cx-30*u+i*18*u; const dy=cy+26*u+ph*(S.groundY-cy-40*u); sctx.globalAlpha=1-ph; sctx.beginPath(); sctx.moveTo(dx,dy); sctx.lineTo(dx-2*u,dy+9*u); sctx.stroke(); }
+      sctx.globalAlpha=1;
+      sctx.fillStyle=colors.sun; sctx.beginPath(); el(sctx,S.houseX+70*u,S.H*.22,30*u,30*u); sctx.fill();
+    }
+    function drawHouse(){
+      const u=S.s, x=S.houseX, y=S.groundY+2*u;
+      lctx.fillStyle=colors.ink; lctx.beginPath();
+      rr(lctx,x-70*u,y-96*u,140*u,96*u,10*u);
+      lctx.moveTo(x-88*u,y-90*u); lctx.lineTo(x,y-150*u); lctx.lineTo(x+88*u,y-90*u); lctx.closePath();
+      rr(lctx,x-112*u,y-70*u,6*u,70*u,3*u); rr(lctx,x-132*u,y-92*u,46*u,26*u,6*u);
+      lctx.fill();
+    }
+    function houseAccents(){
+      const u=S.s, x=S.houseX, y=S.groundY+2*u;
+      ctx.fillStyle=colors.soft; ctx.beginPath(); rr(ctx,x-22*u,y-62*u,44*u,62*u,20*u); ctx.fill();
+      ctx.fillStyle=colors.heart; ctx.beginPath(); heartPath(ctx,x,y-114*u,11*u); ctx.fill();
+      ctx.fillStyle=colors.eye; ctx.beginPath(); pawPathTo(ctx,x-109*u,y-80*u,6*u); ctx.fill();
+    }
+    function drawBowl(){
+      const u=S.s, x=S.bowlX, y=S.groundY+2*u;
+      lctx.fillStyle=colors.ink; lctx.beginPath(); lctx.moveTo(x-34*u,y-24*u); lctx.lineTo(x+34*u,y-24*u); lctx.lineTo(x+26*u,y); lctx.lineTo(x-26*u,y); lctx.closePath(); lctx.fill();
+      lctx.beginPath(); el(lctx,x,y-24*u,38*u,8*u); lctx.fill();
+    }
+    function bowlAccents(){
+      const u=S.s, x=S.bowlX, y=S.groundY+2*u, f=S.bowlFill;
+      ctx.fillStyle=colors.sun; ctx.beginPath(); el(ctx,x,y-26*u,30*u*f+.1,5*u*f+.1); ctx.fill();
+    }
+    function spawn(){
+      const kind=S.nextKind; S.nextKind=(kind==='dog')?'cat':'dog';
+      S.actors.push({kind, x:-130*S.s, state:'walk', t:0, phase:Math.random()*6, speed:(kind==='dog'?84:74)*S.s, alpha:1});
+    }
+    function step(dt){
+      S.spawnTimer-=dt;
+      if(S.spawnTimer<=0 && S.actors.length<2){ spawn(); S.spawnTimer=8+Math.random()*4; }
+      S.bowlFill=Math.min(1,S.bowlFill+dt*.06);
+      for(const a of S.actors){
+        a.t+=dt;
+        const stopX=S.bowlX-(a.kind==='dog'?92:78)*S.s;
+        if(a.state==='walk'){ a.x+=a.speed*dt; if(a.x>=stopX){ a.x=stopX; a.state='eat'; a.t=0; } }
+        else if(a.state==='eat'){
+          S.bowlFill=Math.max(.15,S.bowlFill-dt*.1);
+          if(Math.floor(a.t*1.3)!==Math.floor((a.t-dt)*1.3)) S.hearts.push({x:a.x+52*S.s, y:S.groundY-72*S.s, t:0, v:.6+Math.random()*.5, r:(6+Math.random()*4)*S.s});
+          if(a.t>4.6){ a.state='tohouse'; a.t=0; }
+        } else if(a.state==='tohouse'){
+          a.x+=a.speed*.75*dt;
+          const doorX=S.houseX-12*S.s;
+          if(a.x>doorX-40*S.s) a.alpha=Math.max(0,(doorX+10*S.s-a.x)/(50*S.s));
+          if(a.x>=doorX+10*S.s){ a.state='done'; S.hearts.push({x:S.houseX, y:S.groundY-165*S.s, t:0, v:.9, r:10*S.s}); }
+        }
+      }
+      for(let i=S.actors.length-1;i>=0;i--) if(S.actors[i].state==='done') S.actors.splice(i,1);
+      for(const h of S.hearts) h.t+=dt;
+      for(let i=S.hearts.length-1;i>=0;i--) if(S.hearts[i].t>2.6) S.hearts.splice(i,1);
+    }
+    function draw(t){
+      for(const c of [ctx,lctx,sctx]){ c.setTransform(S.dpr,0,0,S.dpr,0,0); c.clearRect(0,0,S.W,S.H); }
+      drawGround(); drawSky(t); drawHouse(); drawBowl();
+      for(const a of S.actors){
+        lctx.save(); lctx.globalAlpha=a.alpha;
+        const walk=(a.state==='eat')?0:t*9+a.phase, eat=a.state==='eat', bob=eat?Math.sin(t*6)*2*S.s:0, wag=t*(eat?8:4)+a.phase;
+        if(a.kind==='dog') drawDog(lctx,a.x,S.groundY+bob,S.s*1.05,walk,eat,wag); else drawCat(lctx,a.x,S.groundY+bob,S.s,walk,eat,wag);
+        lctx.restore();
+      }
+      ctx.globalAlpha=colors.sa; ctx.drawImage(softc,0,0,S.W,S.H);
+      ctx.globalAlpha=colors.a; ctx.drawImage(layer,0,0,S.W,S.H);
+      ctx.globalAlpha=1; houseAccents(); bowlAccents();
+      for(const a of S.actors){
+        ctx.save(); ctx.globalAlpha=a.alpha;
+        const eat=a.state==='eat', bob=eat?Math.sin(t*6)*2*S.s:0;
+        if(a.kind==='dog') dogAccents(ctx,a.x,S.groundY+bob,S.s*1.05,eat); else catAccents(ctx,a.x,S.groundY+bob,S.s,eat);
+        ctx.restore();
+      }
+      ctx.fillStyle=colors.heart;
+      for(const h of S.hearts){ const k=h.t/2.6; ctx.globalAlpha=(1-k); ctx.beginPath(); heartPath(ctx,h.x+Math.sin(h.t*3)*8*S.s,h.y-h.t*55*S.s*h.v,h.r*(1+k*.6)); ctx.fill(); }
+      ctx.globalAlpha=1;
+    }
+    function frame(now){
+      if(!S.running) return;
+      const dt=Math.min(.05, S.lastT?(now-S.lastT)/1000:.016); S.lastT=now;
+      if(S.visible && !document.hidden){ step(dt); draw(now/1000); }
+      requestAnimationFrame(frame);
+    }
+    function staticFrame(){
+      S.actors.length=0; S.hearts.length=0;
+      S.actors.push({kind:'dog', x:S.bowlX-92*S.s, state:'eat', t:1, phase:0, speed:0, alpha:1});
+      S.actors.push({kind:'cat', x:Math.max(40*S.s, S.W*.22), state:'walk', t:0, phase:1, speed:0, alpha:1});
+      S.hearts.push({x:S.bowlX-40*S.s, y:S.groundY-80*S.s, t:.9, v:.6, r:8*S.s});
+      S.bowlFill=.7; draw(1.2);
+    }
+    function start(){
+      resize();
+      if(reduce.matches){ S.running=false; staticFrame(); return; }
+      if(!S.running){
+        S.actors.length=0; S.hearts.length=0; S.bowlFill=1;
+        S.actors.push({kind:'dog', x:Math.max(30*S.s,S.W*.28), state:'walk', t:0, phase:2, speed:84*S.s, alpha:1});
+        S.running=true; S.lastT=0; requestAnimationFrame(frame);
+      }
+    }
+    if('IntersectionObserver' in window){ new IntersectionObserver(es=>{ S.visible=es[0].isIntersecting; S.lastT=0; },{threshold:0}).observe(canvas); }
+    return {start, resize, staticFrame, redraw:()=>{ if(reduce.matches) staticFrame(); }};
+  }
+
+  /* ---------- ambient background: animals strolling along the bottom of the screen, drifting paw prints, the odd heart ---------- */
+  function makeAmbient(canvas){
+    const ctx=canvas.getContext('2d'); if(!ctx) return null;
+    const layer=document.createElement('canvas'), lctx=layer.getContext('2d');
+    const A={W:0,H:0,dpr:1,paws:[],hearts:[],walkers:[],lastT:0,running:false,heartTimer:2,walkTimer:1.5,nextKind:'cat'};
+    for(let i=0;i<10;i++) A.paws.push({x:Math.random(), y:Math.random(), r:Math.random()*Math.PI*2, v:.01+Math.random()*.015, sz:.6+Math.random()*.8});
+    function resize(){
+      A.W=window.innerWidth; A.H=window.innerHeight; A.dpr=Math.min(2,window.devicePixelRatio||1);
+      for(const c of [canvas,layer]){ c.width=Math.round(A.W*A.dpr); c.height=Math.round(A.H*A.dpr); }
+      canvas.style.width=A.W+'px'; canvas.style.height=A.H+'px';
+    }
+    function unit(){ return Math.max(.55,Math.min(1,A.W/1300)); }
+    function spawnWalker(){
+      const kind=A.nextKind; A.nextKind=(kind==='dog')?'cat':'dog';
+      const u=unit()*(.75+Math.random()*.35);
+      A.walkers.push({kind, x:-140*u, u, speed:(kind==='dog'?46:40)*u*(.9+Math.random()*.3), phase:Math.random()*6, y:A.H-(10+Math.random()*26)*unit()});
+    }
+    function step(dt){
+      for(const p of A.paws){ p.y-=p.v*dt; p.r+=dt*.04; if(p.y<-.1){ p.y=1.1; p.x=Math.random(); } }
+      A.heartTimer-=dt; if(A.heartTimer<=0){ A.hearts.push({x:Math.random(), y:1.05, t:0, v:.03+Math.random()*.02, r:8+Math.random()*8}); A.heartTimer=3+Math.random()*3; }
+      for(const h of A.hearts){ h.t+=dt; h.y-=h.v*dt; }
+      for(let i=A.hearts.length-1;i>=0;i--) if(A.hearts[i].t>9) A.hearts.splice(i,1);
+      A.walkTimer-=dt; if(A.walkTimer<=0 && A.walkers.length<3){ spawnWalker(); A.walkTimer=6+Math.random()*5; }
+      for(const w of A.walkers) w.x+=w.speed*dt;
+      for(let i=A.walkers.length-1;i>=0;i--) if(A.walkers[i].x>A.W+160) A.walkers.splice(i,1);
+    }
+    function draw(t){
+      for(const c of [ctx,lctx]){ c.setTransform(A.dpr,0,0,A.dpr,0,0); c.clearRect(0,0,A.W,A.H); }
+      const u=unit();
+      for(const w of A.walkers){
+        const walk=t*8+w.phase, wag=t*4+w.phase;
+        if(w.kind==='dog') drawDog(lctx,w.x,w.y,w.u,walk,false,wag); else drawCat(lctx,w.x,w.y,w.u,walk,false,wag);
+      }
+      ctx.globalAlpha=colors.amb; ctx.drawImage(layer,0,0,A.W,A.H);
+      ctx.fillStyle=colors.ink;
+      for(const p of A.paws){ ctx.globalAlpha=colors.ambPaw; ctx.save(); ctx.translate(p.x*A.W,p.y*A.H); ctx.rotate(p.r); ctx.beginPath(); pawPathTo(ctx,0,0,16*u*p.sz); ctx.fill(); ctx.restore(); }
+      ctx.fillStyle=colors.heart;
+      for(const h of A.hearts){ const k=Math.min(1,h.t/9); ctx.globalAlpha=Math.sin(k*Math.PI)*.35; ctx.beginPath(); heartPath(ctx,h.x*A.W+Math.sin(h.t*1.5)*12,h.y*A.H,h.r*u); ctx.fill(); }
+      ctx.globalAlpha=1;
+    }
+    function frame(now){
+      if(!A.running) return;
+      const dt=Math.min(.05, A.lastT?(now-A.lastT)/1000:.016); A.lastT=now;
+      if(!document.hidden){ step(dt); draw(now/1000); }
+      requestAnimationFrame(frame);
+    }
+    function staticFrame(){
+      A.walkers.length=0; const u=unit();
+      A.walkers.push({kind:'dog', x:A.W*.18, u:u*.9, speed:0, phase:0, y:A.H-18*u});
+      A.walkers.push({kind:'cat', x:A.W*.72, u:u*.85, speed:0, phase:1, y:A.H-14*u});
+      draw(0.6);
+    }
+    function start(){
+      resize();
+      if(reduce.matches){ A.running=false; staticFrame(); return; }
+      if(!A.running){ A.walkers.length=0; spawnWalker(); A.walkers[0].x=A.W*.35; A.running=true; A.lastT=0; requestAnimationFrame(frame); }
+    }
+    return {start, resize, redraw:()=>{ if(reduce.matches) staticFrame(); }};
+  }
+
+  readColors();
+  const stage=makeStage(document.getElementById('stage'));
+  const ambient=makeAmbient(document.getElementById('scene'));
+  function startAll(){ if(stage) stage.start(); if(ambient) ambient.start(); }
+  window.addEventListener('resize', ()=>{ if(stage){ stage.resize(); stage.redraw(); } if(ambient){ ambient.resize(); ambient.redraw(); } });
+  document.addEventListener('visibilitychange', ()=>{ if(stage) stage.redraw(); });
+  const recolor=()=>{ readColors(); if(stage) stage.redraw(); if(ambient) ambient.redraw(); };
+  const dark=matchMedia('(prefers-color-scheme: dark)');
+  if(dark.addEventListener) dark.addEventListener('change', recolor);
+  if(reduce.addEventListener) reduce.addEventListener('change', ()=>{ readColors(); startAll(); });
+  new MutationObserver(recolor).observe(document.documentElement,{attributes:true, attributeFilter:['data-theme']});
+  startAll();
+})();
+</script>
+</body>
+</html>

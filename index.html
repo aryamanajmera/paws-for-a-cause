@@ -130,6 +130,25 @@ p{margin:0}
 .product .specs{list-style:none; padding:0; margin:14px 0 0; display:grid; gap:8px; font-size:.95rem}
 .product .specs li{display:flex; gap:10px; align-items:flex-start}
 .product .specs svg{width:20px; height:20px; flex:none; color:var(--navy); margin-top:2px}
+.product .price-row{display:flex; align-items:baseline; gap:8px; margin-top:16px}
+.product .price-row b{font-size:1.9rem; font-weight:800; line-height:1; font-variant-numeric:tabular-nums}
+.product .price-row span{color:var(--muted); font-weight:700}
+.product .field{margin-top:14px}
+.product .lbl{display:block; font-size:.8rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:8px}
+.product .sizes{display:flex; gap:6px; flex-wrap:wrap}
+.product .size{min-width:52px; padding:8px 10px; border-radius:10px; border:2px solid var(--line); background:var(--surface-solid); font:inherit; font-weight:800; color:var(--ink); cursor:pointer}
+.product .size[aria-pressed="true"]{background:var(--btn-bg); color:var(--btn-fg); border-color:var(--btn-bg)}
+.product .row2{display:grid; grid-template-columns:auto minmax(0,1fr); gap:14px; align-items:end}
+.product .qty{display:inline-flex; align-items:center; border:2px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface-solid)}
+.product .qty button{width:40px; height:42px; border:0; background:transparent; font:inherit; font-size:1.3rem; font-weight:800; color:var(--ink); cursor:pointer}
+.product .qty output{min-width:34px; text-align:center; font-weight:800; font-variant-numeric:tabular-nums}
+.product .input{width:100%; border:2px solid var(--line); border-radius:12px; padding:10px 12px; font:inherit; background:var(--surface-solid); color:var(--ink); min-height:42px}
+.product .total{display:flex; justify-content:space-between; align-items:baseline; margin-top:16px; padding-top:12px; border-top:1px solid var(--line)}
+.product .total b{font-size:1.6rem; font-weight:800; font-variant-numeric:tabular-nums}
+.product .note{margin-top:12px}
+.product .note textarea{width:100%; resize:none; border:2px solid var(--line); border-radius:12px; padding:10px 12px; font:inherit; font-weight:700; background:var(--surface-2); color:var(--ink); min-height:70px; line-height:1.4}
+.product .cta-row .btn{flex:1 1 auto}
+.product .steps{margin-top:14px}
 .product .cta-row{margin-top:16px}
 .product .fine{font-size:.85rem; color:var(--muted); margin-top:12px}
 
@@ -202,6 +221,13 @@ section[id],article[id],aside[id]{scroll-margin-top:76px}
 .poster-copy .big{font-family:var(--font-display); font-size:clamp(2.2rem,4.6vw,3.4rem); color:var(--navy); line-height:1}
 .poster-copy ul{margin:0; padding-left:1.2em; color:var(--muted)}
 
+/* visit */
+.visit-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px}
+@media (max-width:760px){ .visit-grid{grid-template-columns:1fr} }
+.visit{overflow:hidden}
+.visit img{width:100%; aspect-ratio:4/3; object-fit:cover}
+.visit figcaption{padding:12px 18px 16px; font-size:.95rem; color:var(--muted)}
+
 /* PAWS */
 .paws-grid{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:22px}
 @media (max-width:800px){ .paws-grid{grid-template-columns:1fr} }
@@ -257,6 +283,7 @@ footer p{max-width:70ch; opacity:.9}
       <a href="#product">Our shirt</a>
       <a href="#story">Story</a>
       <a href="#poster">Poster</a>
+      <a href="#visit">Our visit</a>
       <a href="#paws">PAWS</a>
       <a href="#videos">Videos</a>
       <a href="#share">Share</a>
@@ -343,10 +370,47 @@ footer p{max-width:70ch; opacity:.9}
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg><span>White tee, navy print, front and back</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg><span>Adopt · Foster · Support</span></li>
       </ul>
-      <div class="cta-row">
-        <a class="btn primary" href="#product">See the full design</a>
+      <div class="price-row"><b>$20</b><span>a shirt, every dollar goes to the drive</span></div>
+      <div class="field">
+        <span class="lbl" id="size-lbl">Size</span>
+        <div class="sizes" role="group" aria-labelledby="size-lbl">
+          <button class="size" type="button" data-size="S" aria-pressed="false">S</button>
+          <button class="size" type="button" data-size="M" aria-pressed="true">M</button>
+          <button class="size" type="button" data-size="L" aria-pressed="false">L</button>
+          <button class="size" type="button" data-size="XL" aria-pressed="false">XL</button>
+        </div>
       </div>
-      <p class="fine">Want one? Mention it in the note when you donate on GoFundMe, or ask anyone on Team B8.</p>
+      <div class="field row2">
+        <div>
+          <span class="lbl" id="qty-lbl">How many</span>
+          <div class="qty" role="group" aria-labelledby="qty-lbl">
+            <button type="button" id="qty-minus" aria-label="One fewer shirt">−</button>
+            <output id="qty-out">1</output>
+            <button type="button" id="qty-plus" aria-label="One more shirt">+</button>
+          </div>
+        </div>
+        <div>
+          <label class="lbl" for="buyer">Your first name (for pickup)</label>
+          <input class="input" id="buyer" type="text" autocomplete="given-name" placeholder="First name" maxlength="40">
+        </div>
+      </div>
+      <div class="total"><span>Total to donate</span><b id="total">$20</b></div>
+      <div class="note">
+        <label class="lbl" for="order-note">Your order note</label>
+        <textarea id="order-note" readonly rows="2" aria-describedby="note-help">T-SHIRT: 1 x Paws for a Cause tee, size M</textarea>
+      </div>
+      <div class="cta-row">
+        <button class="btn primary" id="copy-note" type="button">Copy order note</button>
+        <a class="btn gfm" id="shop-donate" href="https://www.gofundme.com/f/feeding-homeless-paws-mgmt453-team-b8fall-semester-2026/donate" target="_blank" rel="noopener">Donate $20 on GoFundMe</a>
+      </div>
+      <p class="toast" id="note-toast" role="status" aria-live="polite"></p>
+      <ol class="steps" id="note-help">
+        <li>Pick your size and how many you want.</li>
+        <li>Copy the order note.</li>
+        <li>Tap Donate, give the total on GoFundMe and paste the note in the comment with your donation.</li>
+        <li>We match your donation to the note and get your shirt to you.</li>
+      </ol>
+      <p class="fine">Comments on GoFundMe are public, so the note only carries your first name. Or just ask anyone on Team B8 for one.</p>
     </aside>
   </div>
   </div>
@@ -438,7 +502,7 @@ footer p{max-width:70ch; opacity:.9}
         <p class="eyebrow">Our product</p>
         <h2 id="tee-title">Adopt. Foster. Support.</h2>
       </div>
-      <p>The Paws for a Cause tee, designed by Team B8. White shirt, navy print, a small mark on the front and the shelter's two kinds of residents on the back.</p>
+      <p>The Paws for a Cause tee, designed by Team B8. White shirt, navy print, a small mark on the front and the shelter's two kinds of residents on the back. $20 each in small, medium, large and extra large, and the money goes into the drive like any other donation.</p>
     </div>
     <div class="tee-grid">
       <figure class="card tee">
@@ -478,6 +542,28 @@ footer p{max-width:70ch; opacity:.9}
         </ul>
         <p>The QR code on the poster opens our GoFundMe page. Point a phone camera at it and the donate page comes up.</p>
       </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="band" id="visit" aria-labelledby="visit-title">
+    <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Our visit</p>
+        <h2 id="visit-title">We went to PAWS and met Sky</h2>
+      </div>
+      <p>Before the drive started, our team went out to the shelter on Trout Road to see who we are actually raising the money for. That is where we met Sky, a Great Dane with a lot of spots and a lot of patience.</p>
+    </div>
+    <div class="visit-grid">
+      <figure class="card visit">
+        <img src="img/visit-1.jpg" alt="Four Team B8 members at Centre County PAWS petting Sky, a black and white spotted Great Dane standing in front of a couch" loading="lazy">
+        <figcaption>Team B8 with Sky at Centre County PAWS.</figcaption>
+      </figure>
+      <figure class="card visit">
+        <img src="img/visit-2.jpg" alt="Sky the Great Dane getting attention from the team in the visiting room at Centre County PAWS" loading="lazy">
+        <figcaption>Sky is one of the dogs waiting at the shelter for a home. Every can we collect goes into bowls like hers.</figcaption>
+      </figure>
     </div>
     </div>
   </section>
@@ -610,6 +696,22 @@ footer p{max-width:70ch; opacity:.9}
   document.getElementById('copy-link').addEventListener('click', ()=>copyText(CAMPAIGN, document.getElementById('link-toast'), 'Link copied'));
   document.getElementById('copy-url').addEventListener('click', ()=>copyText(CAMPAIGN, document.getElementById('url-toast'), 'Link copied'));
   document.getElementById('copy-msg').addEventListener('click', ()=>copyText(document.getElementById('share-msg').value, document.getElementById('msg-toast'), 'Message copied. Paste it into a text or a post.'));
+
+  /* ---------- shirt order note ---------- */
+  const PRICE=20, shop={size:'M', qty:1, name:''};
+  const noteEl=document.getElementById('order-note'), totalEl=document.getElementById('total'), qtyOut=document.getElementById('qty-out'), shopDonate=document.getElementById('shop-donate');
+  function renderShop(){
+    const total=PRICE*shop.qty; qtyOut.textContent=shop.qty; totalEl.textContent=money(total); shopDonate.textContent='Donate '+money(total)+' on GoFundMe';
+    const name=shop.name.trim().replace(/\s+/g,' ');
+    noteEl.value='T-SHIRT: '+shop.qty+' x Paws for a Cause tee'+(shop.qty>1?'s':'')+', size '+shop.size+(name?', for '+name:'');
+    document.querySelectorAll('.product .size').forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.size===shop.size)));
+  }
+  document.querySelectorAll('.product .size').forEach(b=>b.addEventListener('click', ()=>{ shop.size=b.dataset.size; renderShop(); }));
+  document.getElementById('qty-minus').addEventListener('click', ()=>{ shop.qty=Math.max(1,shop.qty-1); renderShop(); });
+  document.getElementById('qty-plus').addEventListener('click', ()=>{ shop.qty=Math.min(20,shop.qty+1); renderShop(); });
+  document.getElementById('buyer').addEventListener('input', e=>{ shop.name=e.target.value; renderShop(); });
+  document.getElementById('copy-note').addEventListener('click', ()=>copyText(noteEl.value, document.getElementById('note-toast'), 'Order note copied. Paste it into the comment when you donate.'));
+  renderShop();
 
   /* ---------- product card front/back ---------- */
   const card=document.querySelector('.product');
